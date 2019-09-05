@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Category;
 use App\Chair;
+use App\Image;
 use Illuminate\Http\Request;
 
 class ChairController extends Controller
@@ -52,16 +53,9 @@ class ChairController extends Controller
   public function store(Request $request)
   {
        
-    $data = request()->validate([
-      'name' => 'required|min:3|unique:chairs,name',
-      'category_id' => 'required',
-      'price' => 'required|numeric',
-      'width' => 'required|regex:/[\d-]+/',
-      'height' => 'required|regex:/[\d-]+/',
-      'depth' => 'required|regex:/[\d-]+/',
-      'description' => 'required|min:5'
-    ]);
+    $chair = Chair::create($this->validateRequest());
 
+    $this->storeImage($chair);
     
     return redirect('admin/chairs');
 
@@ -111,4 +105,39 @@ class ChairController extends Controller
   {
       //
   }
+
+  public function validateRequest(){
+
+    return tap(request()->validate([
+      'name' => 'required|min:3|unique:chairs,name',
+      'category_id' => 'required',
+      'price' => 'required|numeric',
+      'width' => 'required|regex:/[\d-]+/',
+      'height' => 'required|regex:/[\d-]+/',
+      'depth' => 'required|regex:/[\d-]+/',
+      'description' => 'required|min:5',
+    ]), function(){
+
+      if(request()->hasFile('file_upload')){
+        request()->validate([
+          'file_upload' => 'file|image|max:1999',
+        ]);
+      }
+
+    });
+
+  }
+
+  public function storeImage($chair){
+
+    if(request()->hasFile('file_upload')){
+      Image::create([
+        'category_id' => $chair->category->id,
+        'category_name' => $chair->category->name,
+        'name' => request('file_upload')->store('uploads', 'public')
+      ]);
+    }
+
+  }
+
 }

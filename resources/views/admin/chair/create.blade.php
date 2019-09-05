@@ -16,13 +16,13 @@
 
   <div class="row">
     <div class="offset-2 col-8 create-chair">
-      <form action="{{ route('chairs.store') }}" method="POST">
+      <form action="{{ route('chairs.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="form-group">
           <label for="name" class="label-admin">Name</label>
           <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name" aria-describedby="name" placeholder="Enter name" value="{{ old('name')}}" autocomplete="on">
           <small id="name" class="form-text text-muted">Must be unique chair name</small>
-
+          
           @error('name')
             <span class="invalid-feedback admin" role="alert">
               <strong>{{ $message }}</strong>
@@ -37,7 +37,7 @@
               <option value="">Choose category...</option>
               @foreach($categories as $category)
                 @if(Str::contains($category->name, 'chairs'))
-                  <option value="{{ $category->id }}">{{ $category->name }}</option>
+                  <option value="{{ $category->id }}" @if(old('category_id') == $category->id) selected @endif>{{ $category->name }}</option>
                 @endif
               @endforeach
             </select>
@@ -75,6 +75,7 @@
           <div class="form-group col-md-4">
             <label for="height" class="label-admin">Height</label>
             <input type="text" class="form-control @error('height') is-invalid @enderror" id="height" name="height" aria-describedby="height" placeholder="Enter height" value="{{ old('height')}}" autocomplete="on">
+            
 
             @error('height')
               <span class="invalid-feedback admin" role="alert">
@@ -106,10 +107,10 @@
         </div>
           
         <div class="custom-file mt-3 mb-1">
-          <input type="file" class="custom-file-input @error('file') is-invalid @enderror" id="validatedCustomFile" multiple>
+          <input type="file" class="custom-file-input @error('file_upload') is-invalid @enderror" id="validatedCustomFile" name="file_upload" multiple>
           <label for="validatedCustomFile" class="custom-file-label">Select images</label>
 
-          @error('file')
+          @error('file_upload')
             <span class="invalid-feedback admin" role="alert">
               <strong>{{ $message }}</strong>
             </span>
