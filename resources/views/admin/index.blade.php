@@ -11,7 +11,7 @@
     <div class="col-md-6">
       <div class="card card-admin mb-5 text-center shadow">
         <div class="card-header">Categories</div>
-        <img class="card-img-top" src="{{ asset('storage/uploads/proizvodi.jpg') }}" alt="Proizvodi" title="Proizvodi">
+        <img class="card-img-top" src="{{ asset('storage/images/proizvodi.jpg') }}" alt="Proizvodi" title="Proizvodi">
         <div class="card-body">
           <div class="d-flex justify-content-center align-items-center">
             <div class="btn-group">
@@ -26,7 +26,7 @@
     <div class="col-md-6">
       <div class="card card-admin mb-5 text-center shadow">
         <div class="card-header">Chairs</div>
-        <img class="card-img-top" src="{{ asset('storage/uploads/stolice.jpg') }}" alt="Stolice" title="Stolice">
+        <img class="card-img-top" src="{{ asset('storage/images/stolice.jpg') }}" alt="Stolice" title="Stolice">
         <div class="card-body">
           <div class="d-flex justify-content-center align-items-center">
             <div class="btn-group">
@@ -41,7 +41,7 @@
     <div class="col-md-6">
       <div class="card card-admin mb-5 text-center shadow">
         <div class="card-header">Tables</div>
-        <img class="card-img-top" src="{{ asset('storage/uploads/stolovi.jpg') }}" alt="Stolovi" title="Stolovi">
+        <img class="card-img-top" src="{{ asset('storage/images/stolovi.jpg') }}" alt="Stolovi" title="Stolovi">
         <div class="card-body">
           <div class="d-flex justify-content-center align-items-center">
             <div class="btn-group">
@@ -56,7 +56,7 @@
     <div class="col-md-6">
       <div class="card card-admin mb-5 text-center shadow">
         <div class="card-header">Users</div>
-        <img class="card-img-top" src="{{ asset('storage/uploads/korisnici.jpg') }}" alt="Korisnici" title="Korisnici">
+        <img class="card-img-top" src="{{ asset('storage/images/korisnici.jpg') }}" alt="Korisnici" title="Korisnici">
         <div class="card-body">
           <div class="d-flex justify-content-center align-items-center">
             <div class="btn-group">

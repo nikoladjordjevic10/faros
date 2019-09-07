@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Category;
 use App\Chair;
 use App\Image;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 
 class ChairController extends Controller
@@ -55,7 +56,7 @@ class ChairController extends Controller
        
     $chair = Chair::create($this->validateRequest());
 
-    $this->storeImage($chair);
+    $this->storeImages($chair);
     
     return redirect('admin/chairs');
 
@@ -118,9 +119,9 @@ class ChairController extends Controller
       'description' => 'required|min:5',
     ]), function(){
 
-      if(request()->hasFile('file_upload')){
+      if(request()->hasFile('images')){
         request()->validate([
-          'file_upload' => 'file|image|max:1999',
+          'images' => 'file|image|max:1999',
         ]);
       }
 
@@ -128,14 +129,26 @@ class ChairController extends Controller
 
   }
 
-  public function storeImage($chair){
+  public function storeImages($chair){
 
-    if(request()->hasFile('file_upload')){
-      Image::create([
-        'category_id' => $chair->category->id,
-        'category_name' => $chair->category->name,
-        'name' => request('file_upload')->store('uploads', 'public')
-      ]);
+    if(request()->has('images')){
+
+      $images = Collection::wrap(request()->file('images'));
+
+      $images->each(function($image){
+
+        $image_name = $image->getClientOriginalName();
+       
+        $image->move(public_path('/images'), $image_name);
+
+        Image::create([
+          'category_id' => $chair->category->id,
+          'category_name' => $chair->category->name,
+          'name' => $image_name,
+        ]);
+       
+      });
+
     }
 
   }

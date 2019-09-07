@@ -7,7 +7,7 @@
 
   <div class="row py-5">
     <div class="col-12 d-flex flex-column flex-sm-row align-items-center justify-content-between">
-      <img src="{{ asset('storage/uploads/proizvodi.jpg') }}" alt="Proizvodi" class="img-thumbnail" width="150"
+      <img src="{{ asset('storage/images/proizvodi.jpg') }}" alt="Proizvodi" class="img-thumbnail" width="150"
         height="150">
       <h1>Create New Category</h1>
       <a href="{{ route('admin') }}" class="btn btn-md btn-outline-secondary">Back to Home</a>
