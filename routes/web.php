@@ -28,4 +28,9 @@ Route::patch('/admin/categories/{category}', 'CategoryController@update')->name(
 Route::delete('/admin/categories/{category}', 'CategoryController@destroy')->name('categories.destroy');
 
 // Chairs routes
-Route::resource('admin/chairs', 'ChairController');
+// Route::resource('admin/chairs', 'ChairController');
+Route::get('/admin/chairs', 'ChairController@index')->name('chairs.index');
+Route::get('/admin/chairs/create', 'ChairController@create')->name('chairs.create');
+Route::post('/admin/chairs', 'ChairController@store')->name('chairs.store');
+Route::get('/admin/chairs/{chair}/edit', 'ChairController@edit')->name('chairs.edit');
+Route::patch('/admin/chairs/{chair}', 'ChairController@update')->name('chairs.update');

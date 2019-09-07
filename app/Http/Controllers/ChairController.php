@@ -41,7 +41,9 @@ class ChairController extends Controller
 
     $categories = Category::all();
 
-    return view('admin.chair.create', compact('categories'));
+    $chair = new Chair();
+
+    return view('admin.chair.create', compact('categories', 'chair'));
 
   }
 
@@ -81,7 +83,11 @@ class ChairController extends Controller
    */
   public function edit(Chair $chair)
   {
-      //
+
+    $categories = Category::all();
+      
+    return view('admin.chair.edit', compact('chair', 'categories'));
+
   }
 
   /**
@@ -93,7 +99,13 @@ class ChairController extends Controller
    */
   public function update(Request $request, Chair $chair)
   {
-      //
+
+    $chair->update($this->validateRequest($chair));
+
+    $this->storeImages($chair);
+    
+    return redirect('admin/chairs');
+
   }
 
   /**
@@ -107,10 +119,10 @@ class ChairController extends Controller
       //
   }
 
-  public function validateRequest(){
+  public function validateRequest($chair){
 
     return tap(request()->validate([
-      'name' => 'required|min:3|unique:chairs,name',
+      'name' => 'required|min:3|unique:chairs,name,'.$chair->id,
       'category_id' => 'required',
       'price' => 'required|numeric',
       'width' => 'required|regex:/[\d-]+/',

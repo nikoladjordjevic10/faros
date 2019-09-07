@@ -15,10 +15,10 @@ class Chair extends Model
 
   }
 
-  public function getPriceAttribute($value){
+  // public function getPriceAttribute($value){
 
-    return number_format($value, 0, 0, '.') . ' din';
+  //   return number_format($value, 0, 0, '.') . ' din';
 
-  }
+  // }
 
 }
