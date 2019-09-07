@@ -53,7 +53,7 @@ class ChairController extends Controller
    */
   public function store(Request $request)
   {
-       
+    
     $chair = Chair::create($this->validateRequest());
 
     $this->storeImages($chair);
@@ -121,7 +121,7 @@ class ChairController extends Controller
 
       if(request()->hasFile('images')){
         request()->validate([
-          'images' => 'file|image|max:1999',
+          'images.*' => 'file|image|mimes:jpeg,jpg,png,gif,svg,bmp|max:2048',
         ]);
       }
 
@@ -135,7 +135,7 @@ class ChairController extends Controller
 
       $images = Collection::wrap(request()->file('images'));
 
-      $images->each(function($image){
+      $images->each(function($image) use($chair){
 
         $image_name = $image->getClientOriginalName();
        
