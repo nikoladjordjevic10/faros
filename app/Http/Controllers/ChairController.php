@@ -53,10 +53,26 @@ class ChairController extends Controller
    * @param  \Illuminate\Http\Request  $request
    * @return \Illuminate\Http\Response
    */
-  public function store(Request $request)
+  public function store(Request $request) 
   {
     
-    $chair = Chair::create($this->validateRequest());
+    $chair = Chair::create(tap(request()->validate([
+      'name' => 'required|min:3|unique:chairs,name',
+      'category_id' => 'required',
+      'price' => 'required|numeric',
+      'width' => 'required|regex:/[\d-]+/',
+      'height' => 'required|regex:/[\d-]+/',
+      'depth' => 'required|regex:/[\d-]+/',
+      'description' => 'required|min:5',
+    ]), function(){
+
+      if(request()->hasFile('images')){
+        request()->validate([
+          'images.*' => 'file|image|mimes:jpeg,jpg,png,gif,svg,bmp|max:2048',
+        ]);
+      }
+
+    }));
 
     $this->storeImages($chair);
     
@@ -72,7 +88,10 @@ class ChairController extends Controller
    */
   public function show(Chair $chair)
   {
-      //
+
+    $images = Image::where('item_name', '=', $chair->name)->get();
+
+    return view('admin.chair.show', compact('chair', 'images'));
   }
 
   /**
@@ -100,7 +119,23 @@ class ChairController extends Controller
   public function update(Request $request, Chair $chair)
   {
 
-    $chair->update($this->validateRequest($chair));
+    $chair->update(tap(request()->validate([
+      'name' => 'required|min:3|unique:chairs,name,'.$chair->id,
+      'category_id' => 'required',
+      'price' => 'required|numeric',
+      'width' => 'required|regex:/[\d-]+/',
+      'height' => 'required|regex:/[\d-]+/',
+      'depth' => 'required|regex:/[\d-]+/',
+      'description' => 'required|min:5',
+    ]), function(){
+
+      if(request()->hasFile('images')){
+        request()->validate([
+          'images.*' => 'file|image|mimes:jpeg,jpg,png,gif,svg,bmp|max:2048',
+        ]);
+      }
+
+    }));
 
     $this->storeImages($chair);
     
@@ -119,28 +154,6 @@ class ChairController extends Controller
       //
   }
 
-  public function validateRequest($chair){
-
-    return tap(request()->validate([
-      'name' => 'required|min:3|unique:chairs,name,'.$chair->id,
-      'category_id' => 'required',
-      'price' => 'required|numeric',
-      'width' => 'required|regex:/[\d-]+/',
-      'height' => 'required|regex:/[\d-]+/',
-      'depth' => 'required|regex:/[\d-]+/',
-      'description' => 'required|min:5',
-    ]), function(){
-
-      if(request()->hasFile('images')){
-        request()->validate([
-          'images.*' => 'file|image|mimes:jpeg,jpg,png,gif,svg,bmp|max:2048',
-        ]);
-      }
-
-    });
-
-  }
-
   public function storeImages($chair){
 
     if(request()->has('images')){
@@ -151,11 +164,11 @@ class ChairController extends Controller
 
         $image_name = $image->getClientOriginalName();
        
-        $image->move(public_path('/images'), $image_name);
+        $image->move(public_path('storage/images'), $image_name);
 
         Image::create([
           'category_id' => $chair->category->id,
-          'category_name' => $chair->category->name,
+          'item_name' => $chair->name,
           'name' => $image_name,
         ]);
        

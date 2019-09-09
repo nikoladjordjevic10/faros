@@ -10756,6 +10756,7 @@ h1 > span {
   font-size: 1rem;
   text-transform: uppercase;
   padding-top: 1rem;
+  vertical-align: middle;
 }
 
 .table td {

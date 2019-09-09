@@ -15,10 +15,16 @@ class Chair extends Model
 
   }
 
-  // public function getPriceAttribute($value){
+  public function dimensions(){
 
-  //   return number_format($value, 0, 0, '.') . ' din';
+    return $this->attributes['width'] . 'cm / ' . $this->attributes['height'] . 'cm / ' . $this->attributes['depth'] . 'cm';
 
-  // }
+  }
+
+  public function formatPrice(){
+
+    return number_format($this->attributes['price'], 0, 0, '.') . ' din';
+
+  }
 
 }

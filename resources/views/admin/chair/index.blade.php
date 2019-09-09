@@ -32,8 +32,8 @@
             <th scope="row">{{ $chair->id }}</th>
             <td>{{ $chair->name }}</td>
             <td>{{ $chair->category->name }}</td>
-            <td>{{ $chair->price }}</td>
-            <td><a href="#" class="btn btn-sm btn-outline-secondary">Show</a></td>
+            <td>{{ $chair->formatPrice() }}</td>
+            <td><a href="{{ route('chairs.show', ['chair' => $chair]) }}" class="btn btn-sm btn-outline-secondary">Show</a></td>
             <td><a href="{{ route('chairs.edit', ['chair' => $chair]) }}" class="btn btn-sm btn-outline-secondary">Edit</a></td>
           </tr>
           @endforeach
