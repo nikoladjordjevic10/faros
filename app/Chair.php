@@ -15,6 +15,12 @@ class Chair extends Model
 
   }
 
+  public function images(){
+
+    return $this->hasMany(Image::class);
+
+  }
+
   public function dimensions(){
 
     return $this->attributes['width'] . 'cm / ' . $this->attributes['height'] . 'cm / ' . $this->attributes['depth'] . 'cm';

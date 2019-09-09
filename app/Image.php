@@ -9,4 +9,10 @@ class Image extends Model
     
   protected $guarded = [];
 
+  public function chair(){
+
+    return $this->belongsTo(Chair::class);
+
+  }
+
 }
