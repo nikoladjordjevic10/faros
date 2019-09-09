@@ -14,7 +14,9 @@
           </div>
           @endif
 
-          You are logged in!
+          You are logged in! <br>
+
+          Go To <a href="{{ route('admin') }}" class="btn btn-md btn-outline-secondary m-3">Admin Panel</a>
 
         </div>
       </div>
