@@ -35,3 +35,4 @@ Route::post('/admin/chairs', 'ChairController@store')->name('chairs.store');
 Route::get('admin/chairs/{chair}', 'ChairController@show')->name('chairs.show');
 Route::get('/admin/chairs/{chair}/edit', 'ChairController@edit')->name('chairs.edit');
 Route::patch('/admin/chairs/{chair}', 'ChairController@update')->name('chairs.update');
+Route::delete('/admin/chairs/{chair}', 'ChairController@destroy')->name('chairs.destroy');

@@ -8,8 +8,19 @@
   <div class="row py-5">
     <div class="col-12 d-flex flex-column flex-sm-row align-items-center justify-content-between">
       <img src="{{ asset('storage/images/stolice.jpg') }}" alt="Stolice" class="img-thumbnail mb-5 mb-sm-0" width="150" height="150">
-      <h1 class="mb-5 mb-sm-0">Show Chair : {{ $chair->name }}</h1>
+      <h1 class="mb-5 mb-sm-0">Show Chair : <span>{{ $chair->name }}</span></h1>
       <a href="{{ route('admin') }}" class="btn btn-md btn-outline-secondary">Back to Home</a>
+    </div>
+  </div>
+
+  <div class="row pb-5">
+    <div class="offset-2 col-8 d-flex justify-content-center">
+      <a href="{{ route('chairs.index') }}" class="btn btn-md btn-outline-secondary mr-5">Back to Chairs</a>
+      <form action="{{ route('chairs.destroy', ['chair' => $chair]) }}" method="POST">
+        @csrf
+        @method('DELETE')
+        <button type="submit" class="btn btn-md btn-outline-danger">Delete Chair</button>
+      </form>
     </div>
   </div>
 

@@ -18,6 +18,7 @@ class CreateImagesTable extends Migration
             $table->unsignedBigInteger('category_id');
             $table->string('item_name');
             $table->string('name');
+            $table->string('path');
             $table->timestamps();
 
              $table->foreign('category_id')->references('id')->on('categories');

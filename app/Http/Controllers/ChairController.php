@@ -7,6 +7,7 @@ use App\Chair;
 use App\Image;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class ChairController extends Controller
 {
@@ -143,17 +144,6 @@ class ChairController extends Controller
 
   }
 
-  /**
-   * Remove the specified resource from storage.
-   *
-   * @param  \App\Chair  $chair
-   * @return \Illuminate\Http\Response
-   */
-  public function destroy(Chair $chair)
-  {
-      //
-  }
-
   public function storeImages($chair){
 
     if(request()->has('images')){
@@ -170,11 +160,37 @@ class ChairController extends Controller
           'category_id' => $chair->category->id,
           'item_name' => $chair->name,
           'name' => $image_name,
+          'path' => '/storage/images/' . $image_name,
         ]);
        
       });
 
     }
+
+  }
+
+  /**
+   * Remove the specified resource from storage.
+   *
+   * @param  \App\Chair  $chair
+   * @return \Illuminate\Http\Response
+   */
+  public function destroy(Chair $chair, Image $image)
+  {
+    
+    $images = Image::where('item_name', '=', $chair->name)->get();
+
+    foreach($images as $image){
+
+      File::delete(public_path($image->path));
+
+      $image->delete();
+
+    }
+
+    $chair->delete();
+
+    return redirect('admin/chairs');
 
   }
 

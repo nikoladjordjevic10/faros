@@ -10736,6 +10736,7 @@ main {
      object-fit: contain;
 }
 
+span,
 h1 > span {
   color: #51a8b1;
 }

@@ -29,14 +29,3 @@
 </div>
 
 @endsection
-
-{{-- <div class="form-group pb-3">
-  <label for="file" class="label-admin">Select images</label>
-  <input type="file" class="form-control-file @error('file') is-invalid @enderror" id="file" multiple>
-
-  @error('description')
-    <span class="invalid-feedback admin" role="alert">
-      <strong>{{ $message }}</strong>
-    </span>
-  @enderror
-</div> --}}
