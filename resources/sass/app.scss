@@ -123,15 +123,17 @@ span, h1>span {
   }
   td {
     vertical-align: middle;
-    .btn-sm {
+    .btn-sm, .btn-outline-primary {
       text-transform: uppercase;
       border-color: $primary-color;
       color: $primary-color;
-      &:hover {
+      &:hover, .btn-outline-primary:hover {
         color: $light-color;
+        background-color: $primary-color;
       }
     }
   }
+  
 }
 
 // Form Fields Styling

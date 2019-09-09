@@ -66,6 +66,12 @@
               @endforeach
             </td>
           </tr>
+          <tr>
+              <th></th>
+              <td>
+                  <a href="#" class="btn btn-md btn-outline-primary">Edit Images</a>
+              </td>
+            </tr>
         </tbody>
       </table>
     </div>

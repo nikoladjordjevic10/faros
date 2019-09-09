@@ -10772,15 +10772,20 @@ h1 > span {
 }
 
 .table td .btn-sm,
-.table td .btn-group-sm > .btn {
+.table td .btn-group-sm > .btn,
+.table td .btn-outline-primary {
   text-transform: uppercase;
   border-color: #51a8b1;
   color: #51a8b1;
 }
 
 .table td .btn-sm:hover,
-.table td .btn-group-sm > .btn:hover {
+.table td .btn-group-sm > .btn:hover,
+.table td .btn-sm .btn-outline-primary:hover,
+.table td .btn-outline-primary:hover,
+.table td .btn-outline-primary .btn-outline-primary:hover {
   color: #f7f7f7;
+  background-color: #51a8b1;
 }
 
 form .label-admin {
