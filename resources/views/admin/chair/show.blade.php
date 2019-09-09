@@ -5,6 +5,12 @@
 @section('content')
 <div class="container">
 
+    @if(session('message'))
+      <div class="alert alert-success alert-custom">
+          {{ session('message') }}
+      </div>
+    @endif
+
   <div class="row py-5">
     <div class="col-12 d-flex flex-column flex-sm-row align-items-center justify-content-between">
       <img src="{{ asset('storage/images/stolice.jpg') }}" alt="Stolice" class="img-thumbnail mb-5 mb-sm-0" width="150" height="150">

@@ -15,18 +15,19 @@ class Chair extends Model
 
   }
 
-  public function setNameAttribute($value){
-
-    $this->attributes['name'] = ucwords($value);
-
-  }
-
   public function images(){
 
     return $this->hasMany(Image::class);
 
   }
 
+  public function setNameAttribute($value){
+
+    $this->attributes['name'] = ucwords($value);
+
+  }
+
+  
   public function dimensions(){
 
     return $this->attributes['width'] . 'cm / ' . $this->attributes['height'] . 'cm / ' . $this->attributes['depth'] . 'cm';

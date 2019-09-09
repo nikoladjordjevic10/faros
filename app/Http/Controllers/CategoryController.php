@@ -37,7 +37,7 @@ class CategoryController extends Controller
       'name' => 'required|min:3|unique:categories,name'
     ]));
 
-    return redirect('admin/categories');
+    return redirect('admin/categories')->with('message', 'Category created successfully');
 
   }
 
@@ -59,7 +59,7 @@ class CategoryController extends Controller
       'name' => 'required|min:3|unique:categories,name'
     ]));
 
-    return redirect('admin/categories');
+    return redirect('admin/categories')->with('message', 'Category updated successfully');
 
   }
 
@@ -67,7 +67,7 @@ class CategoryController extends Controller
 
     $category->delete();
 
-    return redirect('admin/categories');
+    return redirect('admin/categories')->with('message', 'Category deleted successfully');
 
   }
 

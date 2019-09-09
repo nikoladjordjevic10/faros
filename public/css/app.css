@@ -10705,6 +10705,13 @@ main {
   font-size: 1rem;
 }
 
+.alert-custom {
+  background-color: #51a8b1;
+  color: #f7f7f7;
+  font-size: 1.1rem;
+  border-color: #606062;
+}
+
 .card-admin {
   border-color: #51a8b1;
   height: 25rem;

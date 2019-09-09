@@ -77,7 +77,7 @@ class ChairController extends Controller
 
     $this->storeImages($chair);
     
-    return redirect('admin/chairs');
+    return redirect('admin/chairs')->with('message', 'Chair added successfully');
 
   }
 
@@ -140,7 +140,7 @@ class ChairController extends Controller
 
     $this->storeImages($chair);
     
-    return redirect('admin/chairs');
+    return redirect('admin/chairs/' . $chair->id)->with('message', 'Chair edited successfully');
 
   }
 
@@ -190,7 +190,7 @@ class ChairController extends Controller
 
     $chair->delete();
 
-    return redirect('admin/chairs');
+    return redirect('admin/chairs')->with('message', 'Chair deleted successfully');
 
   }
 

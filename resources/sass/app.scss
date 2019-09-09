@@ -64,6 +64,13 @@ main {
 
 // Content
 
+.alert-custom {
+  background-color: $primary-color;
+  color: $light-color;
+  font-size: 1.1rem;
+  border-color: $dark-color;
+}
+
 .card-admin {
   border-color: $primary-color;
   height: 25rem;

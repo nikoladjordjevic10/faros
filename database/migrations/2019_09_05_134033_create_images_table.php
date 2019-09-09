@@ -22,7 +22,7 @@ class CreateImagesTable extends Migration
             $table->timestamps();
 
              $table->foreign('category_id')->references('id')->on('categories');
-             $table->foreign('item_name')->references('name')->on('chairs');
+             $table->foreign('item_name')->references('name')->on('chairs')->onUpdate('cascade');
         });
     }
 
