@@ -14,10 +14,13 @@
           </div>
           @endif
 
-          Welcome <span>{{ Auth::user()->FullName }}</span>, you are logged in! <br>
+          @if(Auth::check())
+            Welcome <span>{{ Auth::user()->FullName }}</span>, you are logged in! <br>
 
-          Go To <a href="{{ route('admin') }}" class="btn btn-md btn-outline-secondary m-3">Admin Panel</a>
-
+            Go To <a href="{{ route('admin') }}" class="btn btn-md btn-outline-secondary m-3">Admin Panel</a>
+          @else
+            Please login or register
+          @endif
         </div>
       </div>
     </div>
