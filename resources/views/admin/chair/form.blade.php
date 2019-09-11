@@ -94,11 +94,11 @@
 </div>
 
 <div class="custom-file mt-3 mb-1">
-  <input type="file" class="custom-file-input @error('images') is-invalid @enderror" id="validatedCustomFile"
+  <input type="file" id="validatedCustomFile" class="custom-file-input @error('images') is-invalid @enderror" id="validatedCustomFile"
     name="images[]" multiple>
-  <label for="validatedCustomFile" class="custom-file-label">Select images</label>
+  <label for="validatedCustomFile" class="custom-file-label"><span class="custom-text-label">Select images</span></label>
 
-  @error('images')
+  @error('images.*')
   <span class="invalid-feedback admin" role="alert">
     <strong>{{ $message }}</strong>
   </span>

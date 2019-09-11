@@ -49358,6 +49358,19 @@ Vue.component('example-component', __webpack_require__(/*! ./components/ExampleC
 
 var app = new Vue({
   el: '#app'
+}); // Adding dynamic text to custom file input fields 
+
+$(document).ready(function () {
+  $('#validatedCustomFile').on("change", function (e) {
+    var files = $(this)[0].files;
+
+    if (files.length >= 2) {
+      $('.custom-text-label').text(files.length + " files selected");
+    } else {
+      var filename = e.target.value.split('\\').pop();
+      $('.custom-text-label').text(filename);
+    }
+  });
 });
 
 /***/ }),

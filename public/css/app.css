@@ -10736,6 +10736,11 @@ main {
   overflow: hidden;
 }
 
+.card .card-chairImages {
+  width: 16rem;
+  border-bottom: 1px solid #51a8b1;
+}
+
 .img-thumbnail {
   height: 10rem;
   width: 10rem;
@@ -10772,18 +10777,25 @@ h1 > span {
 }
 
 .table td .btn-sm,
-.table td .btn-group-sm > .btn,
-.table td .btn-outline-primary {
+.table td .btn-group-sm > .btn {
   text-transform: uppercase;
   border-color: #51a8b1;
   color: #51a8b1;
 }
 
 .table td .btn-sm:hover,
-.table td .btn-group-sm > .btn:hover,
-.table td .btn-sm .btn-outline-primary:hover,
-.table td .btn-outline-primary:hover,
-.table td .btn-outline-primary .btn-outline-primary:hover {
+.table td .btn-group-sm > .btn:hover {
+  color: #f7f7f7;
+  background-color: #51a8b1;
+}
+
+.btn-outline-primary {
+  text-transform: uppercase;
+  border-color: #51a8b1;
+  color: #51a8b1;
+}
+
+.btn-outline-primary:hover {
   color: #f7f7f7;
   background-color: #51a8b1;
 }
@@ -10818,6 +10830,10 @@ form .invalid-feedback.admin {
 
 form .custom-file-label {
   border-color: #51a8b1;
+}
+
+form .custom-text-label {
+  color: #606062;
 }
 
 footer {

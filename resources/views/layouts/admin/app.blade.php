@@ -74,6 +74,8 @@
 
   </div>
   @include('layouts.admin.footer')
+
+  
 </body>
 
 </html>

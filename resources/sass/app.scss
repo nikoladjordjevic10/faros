@@ -91,6 +91,13 @@ main {
     }
 }
 
+.card {
+  .card-chairImages {
+    width: 16rem;
+    border-bottom: 1px solid $primary-color;
+  }
+}
+
 .img-thumbnail {
   height: 10rem;
   width: 10rem;
@@ -104,8 +111,6 @@ span, h1>span {
 .create-chair {
   text-align: left;
 }
-
-
 
 // Table Styling
 
@@ -123,17 +128,27 @@ span, h1>span {
   }
   td {
     vertical-align: middle;
-    .btn-sm, .btn-outline-primary {
+    .btn-sm {
       text-transform: uppercase;
       border-color: $primary-color;
       color: $primary-color;
-      &:hover, .btn-outline-primary:hover {
+      &:hover {
         color: $light-color;
         background-color: $primary-color;
       }
     }
   }
   
+}
+
+.btn-outline-primary {
+  text-transform: uppercase;
+  border-color: $primary-color;
+  color: $primary-color;
+  &:hover {
+    color: $light-color;
+    background-color: $primary-color;
+  }
 }
 
 // Form Fields Styling
@@ -163,6 +178,9 @@ form {
   }
   .custom-file-label {
     border-color: $primary-color;
+  }
+  .custom-text-label {
+    color: $dark-color;
   }
 }
 

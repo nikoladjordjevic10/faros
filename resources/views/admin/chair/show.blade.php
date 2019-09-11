@@ -69,7 +69,7 @@
           <tr>
               <th></th>
               <td>
-                  <a href="#" class="btn btn-md btn-outline-primary">Edit Images</a>
+                  <a href="{{ route('chairs.editImages', ['chair' => $chair]) }}" class="btn btn-md btn-outline-primary">Edit Images</a>
               </td>
             </tr>
         </tbody>

@@ -110,6 +110,14 @@ class ChairController extends Controller
 
   }
 
+  public function editImages(Chair $chair){
+
+    $images = Image::where('item_name', '=', $chair->name)->get();
+
+    return view('admin.chair.editImages', compact('chair', 'images'));
+
+  }
+
   /**
    * Update the specified resource in storage.
    *
@@ -169,6 +177,27 @@ class ChairController extends Controller
 
   }
 
+  public function storeImagesOnly(){
+
+      $images = request()->validate([
+        'images' => 'required' 
+      ]);
+
+      foreach ($images as $image) {
+        
+        $this->validate([
+          'image' => 'file|image|mimes:jpeg,jpg,png,gif,svg,bmp|max:2048',
+        ]);
+
+        dump($image);
+
+      } 
+      
+      
+    
+     
+  }
+
   /**
    * Remove the specified resource from storage.
    *
@@ -191,6 +220,18 @@ class ChairController extends Controller
     $chair->delete();
 
     return redirect('admin/chairs')->with('message', 'Chair deleted successfully');
+
+  }
+
+  public function destroyImages(){
+
+    $image = Image::find(request('image_id'));
+
+    File::delete(public_path($image->path));
+
+    $image->delete();
+
+    return back()->with('message', 'Image deleted successfully');
 
   }
 
