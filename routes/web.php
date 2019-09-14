@@ -37,5 +37,5 @@ Route::get('admin/chairs/{chair}/edit', 'ChairController@edit')->name('chairs.ed
 Route::patch('admin/chairs/{chair}', 'ChairController@update')->name('chairs.update');
 Route::delete('admin/chairs/{chair}', 'ChairController@destroy')->name('chairs.destroy');
 Route::get('admin/chairs/{chair}/editImages', 'ChairController@editImages')->name('chairs.editImages');
-Route::delete('admin/chairs/{chair}/editImages', 'ChairController@destroyImages')->name('chairs.destroyImages');
+Route::delete('admin/chairs/{image}/editImages', 'ChairController@destroyImages')->name('chairs.destroyImages');
 Route::post('admin/chairs/{chair}/editImages', 'ChairController@storeImagesOnly')->name('chairs.storeImagesOnly');

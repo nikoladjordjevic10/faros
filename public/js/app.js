@@ -49361,10 +49361,19 @@ var app = new Vue({
 }); // Adding dynamic text to custom file input fields 
 
 $(document).ready(function () {
-  $('#validatedCustomFile').on("change", function (e) {
+  $('#image').on("change", function (e) {
     var files = $(this)[0].files;
 
-    if (files.length >= 2) {
+    if (files.length >= 2 && files.length < 5) {
+      var allFiles = [];
+
+      for (i = 0; i < files.length; i++) {
+        allFiles[i] = files[i].name;
+      }
+
+      allFilesList = allFiles.toString().replace(/,/g, "; ");
+      $('.custom-text-label').text(allFilesList);
+    } else if (files.length >= 5) {
       $('.custom-text-label').text(files.length + " files selected");
     } else {
       var filename = e.target.value.split('\\').pop();

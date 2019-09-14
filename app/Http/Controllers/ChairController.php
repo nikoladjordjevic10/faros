@@ -56,28 +56,56 @@ class ChairController extends Controller
    */
   public function store(Request $request) 
   {
+
+    $this->validateRequest();
+
+    $chair = new Chair();
+    $chair->name = request()->name;
+    $chair->category_id = request()->category_id;
+    $chair->price = request()->price;
+    $chair->width = request()->width;
+    $chair->height = request()->height;
+    $chair->depth = request()->depth;
+    $chair->description = request()->description;
+    $chair->save();
+
+    $this->storeImages($chair);
     
-    $chair = Chair::create(tap(request()->validate([
-      'name' => 'required|min:3|unique:chairs,name',
+    return redirect('admin/chairs')->with('message', 'Chair created successfully');
+
+  }
+
+  public function validateRequest($id = null){
+
+    return request()->validate([
+      'name' => 'required|min:3|unique:chairs,name, '. $id,
       'category_id' => 'required',
       'price' => 'required|numeric',
       'width' => 'required|regex:/[\d-]+/',
       'height' => 'required|regex:/[\d-]+/',
       'depth' => 'required|regex:/[\d-]+/',
       'description' => 'required|min:5',
+      'image' => 'sometimes|required',
+      'image.*' => 'file|image|mimes:jpeg,jpg,png,gif,svg,bmp|max:2048',
+    ],[
+      'image.*' => 'The selected file(s) must be an image.'
+    ]);
+
+  }
+
+  public function validateImages(){
+
+    return tap(request()->validate([
+      'image' => 'required'
     ]), function(){
 
-      if(request()->hasFile('images')){
-        request()->validate([
-          'images.*' => 'file|image|mimes:jpeg,jpg,png,gif,svg,bmp|max:2048',
-        ]);
-      }
+      request()->validate([
+        'image.*' => 'file|image|mimes:jpeg,jpg,png,gif,svg,bmp|max:2048'
+      ], [
+        'image.*' => 'The selected file(s) must be an image.'
+      ]);
 
-    }));
-
-    $this->storeImages($chair);
-    
-    return redirect('admin/chairs')->with('message', 'Chair added successfully');
+    });
 
   }
 
@@ -127,49 +155,47 @@ class ChairController extends Controller
    */
   public function update(Request $request, Chair $chair)
   {
-
-    $chair->update(tap(request()->validate([
-      'name' => 'required|min:3|unique:chairs,name,'.$chair->id,
-      'category_id' => 'required',
-      'price' => 'required|numeric',
-      'width' => 'required|regex:/[\d-]+/',
-      'height' => 'required|regex:/[\d-]+/',
-      'depth' => 'required|regex:/[\d-]+/',
-      'description' => 'required|min:5',
-    ]), function(){
-
-      if(request()->hasFile('images')){
-        request()->validate([
-          'images.*' => 'file|image|mimes:jpeg,jpg,png,gif,svg,bmp|max:2048',
-        ]);
-      }
-
-    }));
+    $this->validateRequest($chair->id);
+    
+    $chair->name = request()->name;
+    $chair->category_id = request()->category_id;
+    $chair->price = request()->price;
+    $chair->width = request()->width;
+    $chair->height = request()->height;
+    $chair->depth = request()->depth;
+    $chair->description = request()->description;
+    $chair->save();
 
     $this->storeImages($chair);
     
-    return redirect('admin/chairs/' . $chair->id)->with('message', 'Chair edited successfully');
+    return redirect('admin/chairs/' . $chair->id)->with('message', 'Chair updated successfully');
 
   }
-
+  
   public function storeImages($chair){
 
-    if(request()->has('images')){
+    if(request()->has('image')){
 
-      $images = Collection::wrap(request()->file('images'));
-
+      $images = Collection::wrap(request()->file('image'));
+       
       $images->each(function($image) use($chair){
 
-        $image_name = $image->getClientOriginalName();
-       
-        $image->move(public_path('storage/images'), $image_name);
+        $imagesStorage = scandir(public_path('storage/images'));
+        
+        $imageName = $image->getClientOriginalName();
 
-        Image::create([
-          'category_id' => $chair->category->id,
-          'item_name' => $chair->name,
-          'name' => $image_name,
-          'path' => '/storage/images/' . $image_name,
-        ]);
+        if (!in_array($imageName, $imagesStorage)) {
+         
+          $image->move(public_path('storage/images'), $imageName);
+  
+          Image::create([
+            'category_id' => $chair->category->id,
+            'item_name' => $chair->name,
+            'name' => $imageName,
+            'path' => '/storage/images/' . $imageName,
+          ]);
+         
+        }
        
       });
 
@@ -177,25 +203,14 @@ class ChairController extends Controller
 
   }
 
-  public function storeImagesOnly(){
+  public function storeImagesOnly(Chair $chair){
 
-      $images = request()->validate([
-        'images' => 'required' 
-      ]);
+    $this->validateImages();
 
-      foreach ($images as $image) {
-        
-        $this->validate([
-          'image' => 'file|image|mimes:jpeg,jpg,png,gif,svg,bmp|max:2048',
-        ]);
-
-        dump($image);
-
-      } 
+    $this->storeImages($chair);
+   
+    return back()->with('message', 'Images updated successfully');
       
-      
-    
-     
   }
 
   /**
@@ -223,9 +238,7 @@ class ChairController extends Controller
 
   }
 
-  public function destroyImages(){
-
-    $image = Image::find(request('image_id'));
+  public function destroyImages(Image $image){
 
     File::delete(public_path($image->path));
 
