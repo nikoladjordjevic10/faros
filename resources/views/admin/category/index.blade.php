@@ -36,7 +36,7 @@
           <tr>
             <th scope="row">{{ $category->id }}</th>
             <td>{{ $category->name }}</td>
-            <td>0</td>
+            <td>{{ count($category->chairs()->where('category_id', $category->id)->get()) }}</td>
             <td><a href="{{ route('categories.show', ['category' => $category]) }}" class="btn btn-sm btn-outline-secondary">Show</a></td>
             <td><a href="{{ route('categories.edit', ['category' => $category]) }}" class="btn btn-sm btn-outline-secondary">Edit</a></td>
           </tr>

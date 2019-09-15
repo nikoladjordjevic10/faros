@@ -15,7 +15,8 @@ class CategoryController extends Controller
 
   }
     
-  public function index(){
+  public function index()
+  {
 
     $categories = Category::all();
 
@@ -23,7 +24,8 @@ class CategoryController extends Controller
 
   }
 
-  public function create(){
+  public function create()
+  {
 
     $category = new Category();
 
@@ -31,7 +33,8 @@ class CategoryController extends Controller
 
   }
 
-  public function store(){
+  public function store()
+  {
 
     Category::create(request()->validate([
       'name' => 'required|min:3|unique:categories,name'
@@ -41,19 +44,22 @@ class CategoryController extends Controller
 
   }
 
-  public function show(Category $category){
+  public function show(Category $category)
+  {
 
     return view('admin.category.show', compact('category'));
 
   }
 
-  public function edit(Category $category){
+  public function edit(Category $category)
+  {
 
     return view('admin.category.edit', compact('category'));
 
   }
 
-  public function update(Category $category){
+  public function update(Category $category)
+  {
 
     $category->update(request()->validate([
       'name' => 'required|min:3|unique:categories,name'
@@ -63,7 +69,8 @@ class CategoryController extends Controller
 
   }
 
-  public function destroy(Category $category){
+  public function destroy(Category $category)
+  {
 
     $category->delete();
 

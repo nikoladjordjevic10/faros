@@ -75,7 +75,8 @@ class ChairController extends Controller
 
   }
 
-  public function validateRequest($id = null){
+  public function validateRequest($id = null)
+  {
 
     return request()->validate([
       'name' => 'required|min:3|unique:chairs,name, '. $id,
@@ -92,8 +93,9 @@ class ChairController extends Controller
     ]);
 
   }
-
-  public function validateImages(){
+  
+  public function validateImages()
+  {
 
     return tap(request()->validate([
       'image' => 'required'
@@ -138,7 +140,8 @@ class ChairController extends Controller
 
   }
 
-  public function editImages(Chair $chair){
+  public function editImages(Chair $chair)
+  {
 
     $images = Image::where('item_name', '=', $chair->name)->get();
 
@@ -172,7 +175,8 @@ class ChairController extends Controller
 
   }
   
-  public function storeImages($chair){
+  public function storeImages($chair)
+  {
 
     if(request()->has('image')){
 
@@ -203,7 +207,8 @@ class ChairController extends Controller
 
   }
 
-  public function storeImagesOnly(Chair $chair){
+  public function storeImagesOnly(Chair $chair)
+  {
 
     $this->validateImages();
 
@@ -238,7 +243,8 @@ class ChairController extends Controller
 
   }
 
-  public function destroyImages(Image $image){
+  public function destroyImages(Image $image)
+  {
 
     File::delete(public_path($image->path));
 
