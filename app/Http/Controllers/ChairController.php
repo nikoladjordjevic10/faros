@@ -120,7 +120,7 @@ class ChairController extends Controller
   public function show(Chair $chair)
   {
 
-    $images = Image::where('item_name', '=', $chair->name)->get();
+    $images = Image::where('chair_id', '=', $chair->id)->orderBy('name')->get();
 
     return view('admin.chair.show', compact('chair', 'images'));
   }
@@ -143,7 +143,7 @@ class ChairController extends Controller
   public function editImages(Chair $chair)
   {
 
-    $images = Image::where('item_name', '=', $chair->name)->get();
+    $images = Image::where('chair_id', '=', $chair->id)->orderBy('name')->get();
 
     return view('admin.chair.editImages', compact('chair', 'images'));
 
@@ -193,7 +193,8 @@ class ChairController extends Controller
           $image->move(public_path('storage/images'), $imageName);
   
           Image::create([
-            'category_id' => $chair->category->id,
+            'chair_id' => $chair->id,
+            'table_id' => null,
             'item_name' => $chair->name,
             'name' => $imageName,
             'path' => '/storage/images/' . $imageName,
@@ -227,7 +228,7 @@ class ChairController extends Controller
   public function destroy(Chair $chair, Image $image)
   {
     
-    $images = Image::where('item_name', '=', $chair->name)->get();
+    $images = Image::where('chair_id', '=', $chair->id)->get();
 
     foreach($images as $image){
 

@@ -15,7 +15,7 @@
     <div class="col-12 d-flex flex-column flex-sm-row align-items-center justify-content-between">
       <img src="{{ asset('storage/images/stolice.jpg') }}" alt="Stolice" class="img-thumbnail mb-5 mb-sm-0" width="150"
         height="150">
-      <h1 class="mb-5 mb-sm-0">Show Chairs Images : <span>{{ $chair->name }}</span></h1>
+      <h1 class="mb-5 mb-sm-0">Show Chair Images : <span>{{ $chair->name }}</span></h1>
       <a href="{{ route('chairs.show', ['chair' => $chair]) }}" class="btn btn-md btn-outline-secondary">Back to
         Chair</a>
     </div>

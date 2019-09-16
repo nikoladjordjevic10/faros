@@ -15,4 +15,10 @@ class Image extends Model
 
   }
 
+  public function table(){
+
+    return $this->belongsTo(Table::class);
+
+  }
+
 }

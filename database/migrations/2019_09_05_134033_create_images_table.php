@@ -15,14 +15,13 @@ class CreateImagesTable extends Migration
     {
         Schema::create('images', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('category_id');
+            $table->unsignedBigInteger('chair_id')->nullable();
+            $table->unsignedBigInteger('table_id')->nullable();
             $table->string('item_name');
             $table->string('name');
             $table->string('path');
             $table->timestamps();
 
-             $table->foreign('category_id')->references('id')->on('categories');
-             $table->foreign('item_name')->references('name')->on('chairs')->onUpdate('cascade');
         });
     }
 

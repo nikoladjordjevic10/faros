@@ -23,4 +23,11 @@ class Category extends Model
 
   }
 
+  public function tables()
+  {
+
+    return $this->hasMany(Table::class);
+
+  }
+
 }

@@ -51,7 +51,7 @@
             <td>{{ $chair->formatPrice() }}</td>
           </tr>
           <tr>
-            <th>Dimensions W/H/D</th>
+            <th>Dimensions W / H / D</th>
             <td>{{ $chair->dimensions() }}</td>
           </tr>
           <tr>
@@ -61,9 +61,13 @@
           <tr>
             <th>Images</th>
             <td>
-              @foreach($images as $image)
-                <img src="{{ asset('storage/images/'. $image->name)  }}" alt="{{ $image->name }}" title="{{ $image->name }}" width="150">
-              @endforeach
+              @if(count($images) > 0)
+                @foreach($images as $image)
+                  <img src="{{ asset('storage/images/'. $image->name) }}" alt="{{ $image->name }}" title="{{ $image->name }}" width="150">
+                @endforeach
+              @else
+                No images available at the moment
+              @endif
             </td>
           </tr>
           <tr>
