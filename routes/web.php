@@ -53,3 +53,13 @@ Route::get('admin/tables/{table}/editImages', 'TableController@editImages')->nam
 Route::delete('admin/tables/{image}/editImages', 'TableController@destroyImages')->name('tables.destroyImages');
 Route::post('admin/tables/{table}/editImages', 'TableController@storeImagesOnly')->name('tables.storeImagesOnly');
 
+// Users routes
+// Route::resource('admin/users', 'UserController');
+Route::get('admin/users', 'UserController@index')->name('users.index');
+Route::get('admin/users/create', 'UserController@create')->name('users.create');
+Route::post('admin/users', 'UserController@store')->name('users.store');
+Route::get('admin/users/{user}', 'UserController@show')->name('users.show');
+Route::get('admin/users/{user}/edit', 'UserController@edit')->name('users.edit');
+Route::patch('admin/users/{user}', 'UserController@update')->name('users.update');
+Route::delete('admin/users/{user}', 'UserController@destroy')->name('users.destroy');
+

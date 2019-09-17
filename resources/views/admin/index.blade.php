@@ -60,8 +60,8 @@
         <div class="card-body">
           <div class="d-flex justify-content-center align-items-center">
             <div class="btn-group">
-              <button type="button" class="btn btn-md btn-outline-secondary">Show All</button>
-              <button type="button" class="btn btn-md btn-outline-secondary">Add New</button>
+              <a href="{{ route('users.index') }}" class="btn btn-md btn-outline-secondary">Show All</a>
+              <a href="{{ route('users.create') }}" class="btn btn-md btn-outline-secondary">Add New</a>
             </div>
           </div>
         </div>
