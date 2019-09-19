@@ -3,7 +3,7 @@
 @section('nav_title', 'Dashboard')
 
 @section('content')
-<div class="container">
+<div class="container admin">
 
   <div class="row py-5">
     <div class="col-12 d-flex flex-column flex-sm-row align-items-center justify-content-between">

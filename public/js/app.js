@@ -49358,7 +49358,7 @@ Vue.component('example-component', __webpack_require__(/*! ./components/ExampleC
 
 var app = new Vue({
   el: '#app'
-}); // Adding dynamic text to custom file input fields 
+}); // Admin Panel - Adding dynamic text to custom file input fields 
 
 $(document).ready(function () {
   $('#image').on("change", function (e) {

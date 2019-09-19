@@ -32,7 +32,7 @@ const app = new Vue({
 });
 
 
-// Adding dynamic text to custom file input fields 
+// Admin Panel - Adding dynamic text to custom file input fields 
 
 $(document).ready(function(){
   

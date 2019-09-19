@@ -14,11 +14,13 @@
 
 Auth::routes();
 
+// Public routes
 Route::get('/', 'HomeController@index')->name('home');
 
+// Admin Panel Routes
 Route::get('/admin', 'AdminController@index')->name('admin');
 
-// Categories routes
+// Admin - Categories routes
 Route::get('admin/categories', 'CategoryController@index')->name('categories.index');
 Route::get('admin/categories/create', 'CategoryController@create')->name('categories.create');
 Route::post('admin/categories', 'CategoryController@store')->name('categories.store');
@@ -27,7 +29,7 @@ Route::get('admin/categories/{category}/edit', 'CategoryController@edit')->name(
 Route::patch('admin/categories/{category}', 'CategoryController@update')->name('categories.update');
 Route::delete('admin/categories/{category}', 'CategoryController@destroy')->name('categories.destroy');
 
-// Chairs routes
+// Admin - Chairs routes
 Route::resource('admin/chairs', 'ChairController');
 // Route::get('admin/chairs', 'ChairController@index')->name('chairs.index');
 // Route::get('admin/chairs/create', 'ChairController@create')->name('chairs.create');
@@ -40,7 +42,7 @@ Route::get('admin/chairs/{chair}/editImages', 'ChairController@editImages')->nam
 Route::delete('admin/chairs/{image}/editImages', 'ChairController@destroyImages')->name('chairs.destroyImages');
 Route::post('admin/chairs/{chair}/editImages', 'ChairController@storeImagesOnly')->name('chairs.storeImagesOnly');
 
-// Tables routes
+// Admin - Tables routes
 Route::resource('admin/tables', 'TableController');
 // Route::get('admin/tables', 'TableController@index')->name('tables.index');
 // Route::get('admin/tables/create', 'TableController@create')->name('tables.create');
@@ -53,13 +55,13 @@ Route::get('admin/tables/{table}/editImages', 'TableController@editImages')->nam
 Route::delete('admin/tables/{image}/editImages', 'TableController@destroyImages')->name('tables.destroyImages');
 Route::post('admin/tables/{table}/editImages', 'TableController@storeImagesOnly')->name('tables.storeImagesOnly');
 
-// Users routes
-// Route::resource('admin/users', 'UserController');
-Route::get('admin/users', 'UserController@index')->name('users.index');
-Route::get('admin/users/create', 'UserController@create')->name('users.create');
-Route::post('admin/users', 'UserController@store')->name('users.store');
-Route::get('admin/users/{user}', 'UserController@show')->name('users.show');
-Route::get('admin/users/{user}/edit', 'UserController@edit')->name('users.edit');
-Route::patch('admin/users/{user}', 'UserController@update')->name('users.update');
+// Admin - Users routes
+Route::resource('admin/users', 'UserController');
+// Route::get('admin/users', 'UserController@index')->name('users.index');
+// Route::get('admin/users/create', 'UserController@create')->name('users.create');
+// Route::post('admin/users', 'UserController@store')->name('users.store');
+// Route::get('admin/users/{user}', 'UserController@show')->name('users.show');
+// Route::get('admin/users/{user}/edit', 'UserController@edit')->name('users.edit');
+// Route::patch('admin/users/{user}', 'UserController@update')->name('users.update');
 Route::delete('admin/users/{user}', 'UserController@destroy')->name('users.destroy');
 

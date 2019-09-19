@@ -3,7 +3,7 @@
 @section('nav_title', 'Dashboard')
 
 @section('content')
-<div class="container">
+<div class="container admin">
 
     @if(session('message'))
       <div class="alert alert-success alert-custom">

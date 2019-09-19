@@ -8,3 +8,43 @@ $light-color: #f7f7f7;
 $font-family-sans-serif: 'Overpass', sans-serif;
 $font-size-base: 0.9rem;
 $line-height-base: 1.6;
+
+// Mixins
+@mixin box-sizing($box-model) {
+  -webkit-box-sizing: $box-model;
+          box-sizing: $box-model;
+}
+
+@mixin transition($args...) {
+  -webkit-transition: $args;
+       -o-transition: $args;
+          transition: $args;
+}
+
+@mixin animation($duration, $animation, $fillMode, $delay){
+  -webkit-animation-name: $animation;
+          animation-name: $animation;
+
+  -webkit-animation-duration: $duration;
+          animation-duration: $duration;
+
+  -webkit-animation-fill-mode: $fillMode;
+          animation-fill-mode: $fillMode;
+
+  -webkit-animation-delay: $delay;
+          animation-delay: $delay; 
+}
+
+@mixin keyframes ($animation) {
+  @-webkit-keyframes #{$animation} {
+    @content;
+  }
+  @keyframes #{$animation} {
+      @content;
+  }
+}
+
+
+
+
+

@@ -3,7 +3,7 @@
 @section('nav_title', 'Dashboard')
 
 @section('content')
-<div class="container">
+<div class="container admin">
 
   <h2 class="py-5 mx-0 my-auto">Welcome to Admin Panel</h2>
 
