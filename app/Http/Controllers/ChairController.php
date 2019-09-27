@@ -123,6 +123,7 @@ class ChairController extends Controller
     $images = Image::where('chair_id', '=', $chair->id)->orderBy('name')->get();
 
     return view('admin.chair.show', compact('chair', 'images'));
+    
   }
 
   /**
@@ -186,7 +187,7 @@ class ChairController extends Controller
 
         $imagesStorage = scandir(public_path('storage/images'));
         
-        $imageName = $image->getClientOriginalName();
+        $imageName = str_replace(' ', '_', $image->getClientOriginalName());
 
         if (!in_array($imageName, $imagesStorage)) {
          

@@ -12,6 +12,7 @@
 
   <!-- Scripts -->
   <script src="{{ asset('js/app.js') }}" defer></script>
+  <script src="{{ asset('js/public.js') }}" defer></script>
   <script src="https://kit.fontawesome.com/96ed7d3134.js"></script>
 
   <!-- Fonts -->
@@ -82,7 +83,7 @@
               <div class="dropdown-menu animate" aria-labelledby="navbarDropdown">
                 @if(count($categories) > 0)
                   @foreach($categories as $category)
-                    <a class="dropdown-item" href="#">{{ $category->name }}</a>
+                    <a class="dropdown-item" href="{{ route('showAll', ['category' => $category]) }}">{{ $category->name }}</a>
                   @endforeach
                 @endif
               </div>

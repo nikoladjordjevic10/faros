@@ -49358,28 +49358,6 @@ Vue.component('example-component', __webpack_require__(/*! ./components/ExampleC
 
 var app = new Vue({
   el: '#app'
-}); // Admin Panel - Adding dynamic text to custom file input fields 
-
-$(document).ready(function () {
-  $('#image').on("change", function (e) {
-    var files = $(this)[0].files;
-
-    if (files.length >= 2 && files.length < 5) {
-      var allFiles = [];
-
-      for (i = 0; i < files.length; i++) {
-        allFiles[i] = files[i].name;
-      }
-
-      allFilesList = allFiles.toString().replace(/,/g, "; ");
-      $('.custom-text-label').text(allFilesList);
-    } else if (files.length >= 5) {
-      $('.custom-text-label').text(files.length + " files selected");
-    } else {
-      var filename = e.target.value.split('\\').pop();
-      $('.custom-text-label').text(filename);
-    }
-  });
 });
 
 /***/ }),

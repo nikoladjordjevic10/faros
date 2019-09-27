@@ -1,6 +1,6 @@
 <footer>
   <div class="row footerUpper">
-    <div class="container d-flex flex-wrap pt-4">
+    <div class="container d-flex flex-wrap text-center text-md-left pt-4">
       <div class="col-lg-3 col-md-6">
         <h2>Delivery</h2>
         <p><i class="fas fa-truck"></i>&nbsp;

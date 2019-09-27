@@ -189,7 +189,7 @@ class TableController extends Controller
 
         $imagesStorage = scandir(public_path('storage/images'));
         
-        $imageName = $image->getClientOriginalName();
+        $imageName = str_replace(' ', '_', $image->getClientOriginalName());
 
         if (!in_array($imageName, $imagesStorage)) {
          

@@ -10738,6 +10738,8 @@ main {
 
 .card .card-chairImages {
   width: 16rem;
+  -o-object-fit: contain;
+     object-fit: contain;
   border-bottom: 1px solid #51a8b1;
 }
 
@@ -10925,7 +10927,7 @@ footer p {
 }
 
 .navbar.public {
-  min-height: 7rem;
+  min-height: 6rem;
   font-size: 1.1rem;
 }
 
@@ -10983,9 +10985,633 @@ footer p {
   }
 }
 
-footer .footerUpper {
+.sliderContainer {
+  height: 60vh;
+  min-height: 12.5rem;
+  background-color: #fff;
+  position: relative;
+}
+
+.sliderContainer .slider {
+  height: 100%;
+}
+
+.sliderContainer .slider:not(:first-child) {
+  display: none;
+}
+
+.sliderContainer .sliderImage {
+  height: 100%;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0;
+  margin-right: -100px;
+  -webkit-animation-name: slideRight;
+  animation-name: slideRight;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+  -webkit-animation-delay: 1s;
+  animation-delay: 1s;
+}
+
+@-webkit-keyframes slideRight {
+  100% {
+    margin-right: 0px;
+    opacity: 1;
+  }
+}
+
+@keyframes slideRight {
+  100% {
+    margin-right: 0px;
+    opacity: 1;
+  }
+}
+
+.sliderContainer .sliderText p {
+  opacity: 0;
+  text-transform: uppercase;
+  text-shadow: 2px 2px 2px rgba(96, 96, 98, 0.6);
+}
+
+.sliderContainer .sliderText p a {
+  color: #606062;
+  text-decoration: underline;
+}
+
+.sliderContainer .sliderText p:nth-of-type(1) {
+  -webkit-animation-name: slideLeft;
+  animation-name: slideLeft;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+  -webkit-animation-delay: 1s;
+  animation-delay: 1s;
+  font-size: 2rem;
+}
+
+.sliderContainer .sliderText p:nth-of-type(2) {
+  -webkit-animation-name: slideLeft;
+  animation-name: slideLeft;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+  -webkit-animation-delay: 1.5s;
+  animation-delay: 1.5s;
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+
+.sliderContainer .sliderText p:nth-of-type(3) {
+  -webkit-animation-name: slideLeft;
+  animation-name: slideLeft;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+  -webkit-animation-delay: 2s;
+  animation-delay: 2s;
+  font-size: 1.5rem;
+}
+
+@-webkit-keyframes slideLeft {
+  100% {
+    opacity: 1;
+    margin-left: 100px;
+  }
+}
+
+@keyframes slideLeft {
+  100% {
+    opacity: 1;
+    margin-left: 100px;
+  }
+}
+
+@media (max-width: 768px) {
+  .sliderContainer .sliderText p {
+    line-height: 1.2;
+  }
+
+  .sliderContainer .sliderText p:nth-of-type(1) {
+    font-size: 1.2rem;
+  }
+
+  .sliderContainer .sliderText p:nth-of-type(2) {
+    font-size: 1.5rem;
+  }
+
+  .sliderContainer .sliderText p:nth-of-type(3) {
+    font-size: 1rem;
+  }
+
+@-webkit-keyframes slideLeft {
+    100% {
+      opacity: 1;
+      margin-left: 50px;
+    }
+}
+
+@keyframes slideLeft {
+    100% {
+      opacity: 1;
+      margin-left: 50px;
+    }
+}
+}
+
+.sliderContainer .previous,
+.sliderContainer .next {
+  position: absolute;
+  top: 45%;
+  cursor: pointer;
+  opacity: 0;
+  -webkit-animation-name: fade;
+  animation-name: fade;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+  -webkit-animation-delay: 0;
+  animation-delay: 0;
+}
+
+.sliderContainer .previous i,
+.sliderContainer .next i {
+  color: #51a8b1;
+}
+
+.sliderContainer .previous i:hover,
+.sliderContainer .next i:hover {
+  color: #606062;
+  transition: all 0.2s ease-in;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sliderContainer .previous i:hover,
+  .sliderContainer .next i:hover {
+    transition: none;
+  }
+}
+
+@-webkit-keyframes fade {
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fade {
+  100% {
+    opacity: 1;
+  }
+}
+
+.sliderContainer .next {
+  right: 0.9rem;
+}
+
+.aboutUs {
+  padding: 1.5rem 1rem 0 1rem;
+}
+
+.aboutUs h3 {
+  text-transform: uppercase;
+  font-size: 1.8rem;
+  margin: 4rem 0;
+}
+
+.aboutUs p {
+  font-size: 1rem;
+  line-height: 1.2;
+}
+
+.row.products {
+  min-height: 6rem;
+  background-color: #51a8b1;
+  margin-top: 5rem;
+}
+
+.row.products .products {
+  height: 100%;
+}
+
+.row.products .products h3 {
+  color: #fff358;
+  margin: 0;
+}
+
+.row.products .products li {
+  padding-right: 0.9rem;
+  padding-left: 0.9rem;
+  border-right: 1px solid #f7f7f7;
+}
+
+.row.products .products li .selected {
+  color: #606062;
+}
+
+.row.products .products a {
+  text-decoration: none;
+  font-size: 1rem;
+}
+
+@media (max-width: 992px) {
+  .row.products .products h3 {
+    text-align: center;
+    margin: 1rem 0;
+  }
+
+  .row.products .products li {
+    margin-bottom: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .row.products .products li {
+    padding: 0;
+    border-right: none;
+    margin-bottom: 0.7rem;
+  }
+}
+
+.productsList ul div:nth-child(1) li {
+  -webkit-animation-delay: 0.25s;
+          animation-delay: 0.25s;
+}
+
+.productsList ul div:nth-child(2) li {
+  -webkit-animation-delay: 0.5s;
+          animation-delay: 0.5s;
+}
+
+.productsList ul div:nth-child(3) li {
+  -webkit-animation-delay: 0.75s;
+          animation-delay: 0.75s;
+}
+
+.productsList ul div:nth-child(4) li {
+  -webkit-animation-delay: 1s;
+          animation-delay: 1s;
+}
+
+.productsList li {
+  width: 15rem;
+  height: 15rem;
+  background-color: #fff;
+  margin: 3rem 3rem 3rem 0;
+  opacity: 0;
+  -webkit-animation-name: delayed;
+  animation-name: delayed;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+  -webkit-animation-delay: 1s;
+  animation-delay: 1s;
+}
+
+@-webkit-keyframes delayed {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes delayed {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.productsList li .productsListBg {
+  width: 15rem;
+  height: 15rem;
+  opacity: 0;
+  background-color: #aaaaab;
+  transition: all 0.5s ease-in-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .productsList li .productsListBg {
+    transition: none;
+  }
+}
+
+.productsList .productsListImage {
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
   min-height: 100%;
-  text-align: left;
+  position: relative;
+}
+
+.productsList .productsListImage:hover .productsListBg {
+  opacity: 0.6;
+  transition: all 0.5s ease-in-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .productsList .productsListImage:hover .productsListBg {
+    transition: none;
+  }
+}
+
+.productsList .productsListImage:hover .fa-plus {
+  transform: scale(1);
+  transition: 0.5s transform 100ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .productsList .productsListImage:hover .fa-plus {
+    transition: none;
+  }
+}
+
+.productsList .productsListImage .productsListLinks {
+  position: absolute;
+  top: 39%;
+  left: 39%;
+}
+
+.productsList .productsListImage .productsListLinks a {
+  color: #606062;
+}
+
+.productsList .productsListImage .productsListLinks i {
+  background-color: #fff;
+  font-size: 1.8rem;
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  line-height: 50px;
+  border-radius: 50%;
+  margin-right: 20px;
+  position: relative;
+  transform: scale(0);
+  transition: all 0.5s ease-in-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .productsList .productsListImage .productsListLinks i {
+    transition: none;
+  }
+}
+
+.productsList .productsListImage .productsListLinks i::after {
+  position: absolute;
+  content: "Details";
+  top: -40px;
+  left: -10px;
+  padding: 10px;
+  background-color: #000;
+  color: #fff;
+  font-size: 0.65rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  border-radius: 5px;
+  line-height: normal;
+  transform: scale(0);
+  transition: transform 0.3s ease-in-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .productsList .productsListImage .productsListLinks i::after {
+    transition: none;
+  }
+}
+
+.productsList .productsListImage .productsListLinks i:hover::after {
+  transform: scale(1);
+}
+
+.productsList .productsListInfo {
+  height: 4.5rem;
+  margin-top: 2rem;
+}
+
+.productsList .productsListInfo h4 {
+  text-align: center;
+  text-transform: uppercase;
+  color: #606062;
+  font-weight: 700;
+}
+
+.productsList .productsListInfo h4:hover {
+  color: #51a8b1;
+}
+
+.productsList .productsListInfo a {
+  text-decoration: none;
+}
+
+.productsList .productsListInfo p {
+  text-align: center;
+  font-size: 1.1rem;
+  letter-spacing: 1px;
+  font-weight: 700;
+  color: #aaaaab;
+}
+
+.productsList.category h1 {
+  text-align: center;
+  text-transform: capitalize;
+}
+
+.productsList.category ul div:nth-child(1) li {
+  -webkit-animation-delay: 0.25s;
+          animation-delay: 0.25s;
+}
+
+.productsList.category ul div:nth-child(2) li {
+  -webkit-animation-delay: 0.5s;
+          animation-delay: 0.5s;
+}
+
+.productsList.category ul div:nth-child(3) li {
+  -webkit-animation-delay: 0.75s;
+          animation-delay: 0.75s;
+}
+
+.productsList.category ul div:nth-child(4) li {
+  -webkit-animation-delay: 1s;
+          animation-delay: 1s;
+}
+
+.productsList.category ul div:nth-child(5) li {
+  -webkit-animation-delay: 1.25s;
+          animation-delay: 1.25s;
+}
+
+.productsList.category ul div:nth-child(6) li {
+  -webkit-animation-delay: 1.5s;
+          animation-delay: 1.5s;
+}
+
+.productsList.category ul div:nth-child(7) li {
+  -webkit-animation-delay: 1.75s;
+          animation-delay: 1.75s;
+}
+
+.productsList.category ul div:nth-child(8) li {
+  -webkit-animation-delay: 2s;
+          animation-delay: 2s;
+}
+
+.productsList.category ul div:nth-child(9) li {
+  -webkit-animation-delay: 2.25s;
+          animation-delay: 2.25s;
+}
+
+.productsList.category ul div:nth-child(10) li {
+  -webkit-animation-delay: 2.5s;
+          animation-delay: 2.5s;
+}
+
+.productsList.category ul div:nth-child(11) li {
+  -webkit-animation-delay: 2.75s;
+          animation-delay: 2.75s;
+}
+
+.productsList.category ul div:nth-child(12) li {
+  -webkit-animation-delay: 3s;
+          animation-delay: 3s;
+}
+
+.productsList.category li,
+.productsList.category .productsListBg {
+  width: 19rem;
+  height: 22rem;
+}
+
+.productsList.category .productsListLinks {
+  top: 41%;
+  left: 39%;
+}
+
+.productsList.category .productsListLinks i {
+  font-size: 2.3rem;
+  width: 65px;
+  height: 65px;
+  line-height: 65px;
+}
+
+.productsList.category .productsListLinks i::after {
+  top: -45px;
+  left: -18px;
+  padding: 10px 20px;
+  font-size: 0.75rem;
+}
+
+.pagination {
+  margin-top: 5rem;
+  font-size: 1.1rem;
+}
+
+.pagination a {
+  background-color: #51a8b1;
+  color: #f7f7f7;
+}
+
+.pagination a:hover {
+  background-color: #606062;
+  color: #f7f7f7;
+}
+
+.pagination .page-item.active .page-link {
+  background-color: #606062;
+  border-color: #606062;
+  color: #f7f7f7;
+}
+
+.pagination .page-item.disabled .page-link {
+  background-color: #51a8b1;
+  border-color: #51a8b1;
+  color: #f7f7f7;
+}
+
+.product .images {
+  opacity: 0;
+  width: 100%;
+  -webkit-animation-name: fade;
+  animation-name: fade;
+  -webkit-animation-duration: 2s;
+  animation-duration: 2s;
+  -webkit-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+  -webkit-animation-delay: 0;
+  animation-delay: 0;
+}
+
+@-webkit-keyframes fade {
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fade {
+  100% {
+    opacity: 1;
+  }
+}
+
+.product .images .imagesNav {
+  margin-right: 2rem;
+}
+
+.product .images .imagesNav li {
+  width: 4.5rem;
+  list-style-type: none;
+  margin: 1rem;
+}
+
+.product .images .imagesNav li img {
+  width: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+  cursor: pointer;
+}
+
+.product .images .imagesNav li .selected {
+  opacity: 0.5;
+  transition: all 0.3s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .product .images .imagesNav li .selected {
+    transition: none;
+  }
+}
+
+.product .images .imageBig {
+  padding: 1rem;
+}
+
+.product .images .imageBig img {
+  width: 100%;
+  border: 1px solid #51a8b1;
+  margin-right: 1rem;
+  opacity: 0;
+}
+
+.product .images .imageBig img.opaque {
+  opacity: 1;
+}
+
+footer .footerUpper {
+  margin-top: 3.5rem;
+  min-height: 100%;
   background-color: #606062;
 }
 

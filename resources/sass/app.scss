@@ -96,6 +96,7 @@ main {
 .card {
   .card-chairImages {
     width: 16rem;
+    object-fit: contain;
     border-bottom: 1px solid $primary-color;
   }
 }
@@ -247,7 +248,7 @@ footer {
 }
 
 .navbar.public {
-  min-height: 7rem;
+  min-height: 6rem;
   font-size: 1.1rem;
   .navbar-toggler {
     border-color: $light-color;
@@ -283,12 +284,396 @@ footer {
   }
 }
 
+// Slider Styling
+
+.sliderContainer {
+  height: 60vh;
+  min-height: 12.5rem;
+  background-color: #fff;
+  position: relative;
+  .slider {
+    height: 100%;
+  }
+  .slider:not(:first-child) {
+    display: none;
+  }
+  .sliderImage {
+    height: 100%;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    opacity: 0;
+    margin-right: -100px;
+    @include animation(1s, slideRight, forwards, 1s);
+    @include keyframes(slideRight){
+      100% {
+        margin-right: 0px;
+        opacity: 1;
+      }
+    }
+  }
+  .sliderText {
+    p {
+      opacity: 0;
+      text-transform: uppercase;
+      text-shadow: 2px 2px 2px rgba(96,96,98,0.6); 
+
+      a {
+        color: $dark-color;
+        text-decoration: underline;
+      }
+    }
+    p:nth-of-type(1){
+      @include animation(1s, slideLeft, forwards, 1s);
+      font-size: 2rem;
+    }
+    p:nth-of-type(2){
+      @include animation(1s, slideLeft, forwards, 1.5s);
+      font-size: 2.5rem;
+      font-weight: 700;
+    }
+    p:nth-of-type(3){
+      @include animation(1s, slideLeft, forwards, 2s);
+      font-size: 1.5rem;
+    }
+    @include keyframes(slideLeft){
+      100% {
+        opacity: 1;
+        margin-left: 100px;
+      }
+    }
+    @media (max-width: 768px){
+      p {
+        line-height: 1.2;
+      }
+      p:nth-of-type(1){
+        font-size: 1.2rem;
+      }
+      p:nth-of-type(2){
+        font-size: 1.5rem;
+      }
+      p:nth-of-type(3){
+        font-size: 1rem;
+      }
+      @include keyframes(slideLeft){
+        100% {
+          opacity: 1;
+          margin-left: 50px;
+        }
+      }
+    }
+  }
+  .previous,
+  .next {
+    position: absolute;
+    top: 45%;
+    cursor: pointer;
+    opacity: 0;
+    i {
+      color: $primary-color;
+      &:hover {
+        color: $dark-color;
+        @include transition(all 0.2s ease-in);
+      }
+    }
+    @include animation(1s, fade, forwards, 0);
+    @include keyframes(fade){
+      100% {
+        opacity: 1;
+      }
+    }
+  }
+  .next {
+    right: 0.9rem;
+  }
+}
+
+// About Us Styling
+
+.aboutUs {
+  padding: 1.5rem 1rem 0 1rem;
+  h3 {
+    text-transform: uppercase;
+    font-size: 1.8rem;
+    margin: 4rem 0;
+  }
+  p {
+    font-size: 1rem;
+    line-height: 1.2;
+  }
+}
+
+// Product Navigation Styling
+
+.row.products {
+  min-height: 6rem;
+  background-color: $primary-color;
+  margin-top: 5rem;
+  .products {
+    height: 100%;
+    h3 {
+      color: $secondary-color;
+      margin: 0;
+    }
+    li {
+      padding-right: 0.9rem;
+      padding-left: 0.9rem;
+      border-right: 1px solid $light-color;
+      .selected {
+        color: $dark-color;
+      }
+    }
+    a {
+      text-decoration: none;
+      font-size: 1rem;
+    }
+  }
+  @media (max-width: 992px){
+    .products {
+      h3 {
+        text-align: center;
+        margin: 1rem 0;
+      }
+      li {
+        margin-bottom: 1rem;
+      }
+    }
+  }
+  @media (max-width: 768px){
+    .products {
+      li {
+        padding: 0;
+        border-right: none;
+        margin-bottom: 0.7rem;
+      }
+    }
+  }
+}
+
+// Products List Styling
+
+.productsList {
+  ul {
+    @for $i from 1 through 4 {
+      div:nth-child(#{$i}) li {
+        animation-delay: $i * 0.25s;
+      }
+    }
+  }
+  li {
+    width: 15rem;
+    height: 15rem;
+    background-color: #fff;
+    margin: 3rem 3rem 3rem 0;
+    opacity: 0;
+    @include animation(1s, delayed, forwards, 1s);
+    @include keyframes (delayed) {
+      from { opacity:0; } to { opacity:1; }
+    }
+    .productsListBg {
+      width: 15rem;
+      height: 15rem;
+      opacity: 0;
+      background-color: $light-grey;
+      @include transition(all 0.5s ease-in-out);
+    }
+  }
+  .productsListImage {
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    min-height: 100%;
+    position: relative;
+    &:hover .productsListBg {
+      opacity: 0.6;
+      @include transition(all 0.5s ease-in-out);
+    }
+    &:hover .fa-plus {
+      @include scale(1);
+      @include transition(0.5s transform 100ms cubic-bezier(0.175, 0.885, 0.32, 1.275));
+    }
+    .productsListLinks {
+      position: absolute;
+      top: 39%;
+      left: 39%;
+      a {
+        color: $dark-color;
+      }
+      i {
+        background-color: #fff;
+        font-size: 1.8rem;
+        width: 50px;
+        height: 50px;
+        text-align: center;
+        line-height: 50px;
+        border-radius: 50%;
+        margin-right: 20px;
+        position: relative;
+        @include scale(0);
+        @include transition(all 0.5s ease-in-out);
+        &::after {
+          position: absolute;
+          content: "Details";
+          top: -40px;
+          left: -10px;
+          padding: 10px;
+          background-color: #000;
+          color: #fff;
+          font-size: 0.65rem;
+          letter-spacing: 1px;
+          text-transform: uppercase;
+          border-radius: 5px;
+          line-height: normal;
+          @include scale(0);
+          @include transition(transform 0.3s ease-in-out);
+        }
+        &:hover::after {
+          @include scale(1);
+        }
+      }
+    }
+  }
+  .productsListInfo {
+    height: 4.5rem;
+    margin-top: 2rem;
+    h4 {
+      text-align: center;
+      text-transform: uppercase;
+      color: $dark-color;
+      font-weight: 700;
+      &:hover {
+        color: $primary-color;
+      }
+    }
+    a {
+      text-decoration: none;
+    }
+    p {
+      text-align: center;
+      font-size: 1.1rem;
+      letter-spacing: 1px;
+      font-weight: 700;
+      color: $light-grey;
+    }
+  }
+}
+
+// Show Categories Styling
+
+.productsList.category {
+  h1 {
+    text-align: center;
+    text-transform: capitalize;
+  }
+  ul {
+    @for $i from 1 through 12 {
+      div:nth-child(#{$i}) li {
+        animation-delay: $i * 0.25s;
+      }
+    }
+  }
+  li, .productsListBg {
+    width: 19rem;
+    height: 22rem;
+  }
+  .productsListLinks {
+    top: 41%;
+    left: 39%;
+    i {
+      font-size: 2.3rem;
+      width: 65px;
+      height: 65px;
+      line-height: 65px;
+      &::after {
+        top: -45px;
+        left: -18px;
+        padding: 10px 20px;
+        font-size: 0.75rem;
+      }
+    }
+    
+  }
+}
+
+// Pagination styling
+
+.pagination {
+  margin-top: 5rem;
+  font-size: 1.1rem;
+  a {
+    background-color: $primary-color;
+    color: $light-color;
+    &:hover {
+      background-color: $dark-color;
+      color: $light-color;
+    }
+  }
+  .page-item.active .page-link {
+    background-color: $dark-color;
+    border-color:$dark-color;
+    color: $light-color;
+  }
+  .page-item.disabled .page-link {
+    background-color: $primary-color;
+    border-color:$primary-color;
+    color: $light-color;
+  }
+}
+
+// Show One Product Styling
+.product {
+  .images {
+    opacity: 0;
+    width: 100%;
+    @include animation(2s, fade, forwards, 0);
+      @include keyframes(fade){
+        100% {
+          opacity: 1;
+        }
+      }
+    .imagesNav {
+      margin-right: 2rem;
+      li {
+        width: 4.5rem;
+        list-style-type: none;
+        margin: 1rem;
+        img {
+          width: 100%;
+          object-fit: contain;
+          cursor: pointer;
+        }
+        .selected {
+          opacity: 0.5;
+          @include transition(all 0.3s ease);
+        }
+      }
+    }
+    .imageBig {
+      padding: 1rem;
+      img {
+        width: 100%;
+        border: 1px solid $primary-color;
+        margin-right: 1rem;
+        opacity: 0;
+        
+      }
+      // img:not(:first-child) {
+      //   display: none;
+      // }
+      img.opaque {
+        opacity: 1;
+      }
+    }
+  }
+
+}
+
 // Footer Styling
 
 footer {
   .footerUpper {
+    margin-top: 3.5rem;
     min-height: 100%;
-    text-align: left;
     background-color: $dark-color;
     p {
       padding-bottom: 2rem;

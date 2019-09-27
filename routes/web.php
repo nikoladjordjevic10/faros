@@ -16,6 +16,8 @@ Auth::routes();
 
 // Public routes
 Route::get('/', 'HomeController@index')->name('home');
+Route::get('/{category}', 'HomeController@showAll')->name('showAll');
+Route::get('/{category}/{product}', 'HomeController@showOne')->name('showOne');
 
 // Admin Panel Routes
 Route::get('/admin', 'AdminController@index')->name('admin');
