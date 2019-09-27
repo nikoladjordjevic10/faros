@@ -101,14 +101,25 @@ $(document).ready(function() {
 // }
 
 $(document).ready(function() {
-  $(".imagesNav").on('click', 'li', function() {
-    $(".imagesBig img").removeClass("opaque");
+  
+  $(window).resize(function(){
+    
+    $(".imageBig img").css("transform", "translateX(0px)");
 
-    var newImage = $(this).index();
+  });
+  
+  $(".imagesNav").on('click', 'img', function() {
 
-    $(".imagesBig img").eq(newImage).addClass("opaque");
+    var indexImg = $(this).parent().index();
 
-    $(".imagesNav li").removeClass("selected");
+    var imgWidth = $(".imageBig img").width();
+    
+
+    $(".imageBig img").css("transform", "translateX("+indexImg * -imgWidth+"px)");
+
+    // $(".imageBig img").eq(newImage).addClass("opaque");
+
+    $(".imagesNav img").removeClass("selected");
     $(this).addClass("selected");
   });
 });

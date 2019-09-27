@@ -173,11 +173,15 @@ $(document).ready(function () {
 // }
 
 $(document).ready(function () {
-  $(".imagesNav").on('click', 'li', function () {
-    $(".imagesBig img").removeClass("opaque");
-    var newImage = $(this).index();
-    $(".imagesBig img").eq(newImage).addClass("opaque");
-    $(".imagesNav li").removeClass("selected");
+  $(window).resize(function () {
+    $(".imageBig img").css("transform", "translateX(0px)");
+  });
+  $(".imagesNav").on('click', 'img', function () {
+    var indexImg = $(this).parent().index();
+    var imgWidth = $(".imageBig img").width();
+    $(".imageBig img").css("transform", "translateX(" + indexImg * -imgWidth + "px)"); // $(".imageBig img").eq(newImage).addClass("opaque");
+
+    $(".imagesNav img").removeClass("selected");
     $(this).addClass("selected");
   });
 });

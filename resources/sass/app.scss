@@ -621,10 +621,44 @@ footer {
 }
 
 // Show One Product Styling
+.productHeader {
+  min-height: 8rem;
+  margin: 0;
+  h2 {
+    margin: 0;
+  }
+  ul {
+    margin: 0;
+    
+    li {
+      position: relative;
+      margin-right: 1.5rem;
+      font-size: 1rem;
+      &:last-child a::after {
+        content: "";
+      }
+      a {
+        color: $dark-color;
+        text-decoration: none;
+        &:hover{
+          color: $primary-color;
+        }
+        &::after {
+          position: absolute;
+          top: 0;
+          left: calc(100% + 0.5rem);
+          content: "/";
+        }
+        
+      }
+    }
+  }
+  
+}
+
 .product {
   .images {
     opacity: 0;
-    width: 100%;
     @include animation(2s, fade, forwards, 0);
       @include keyframes(fade){
         100% {
@@ -636,7 +670,7 @@ footer {
       li {
         width: 4.5rem;
         list-style-type: none;
-        margin: 1rem;
+        margin: 1rem 1rem 1rem 0;
         img {
           width: 100%;
           object-fit: contain;
@@ -649,23 +683,59 @@ footer {
       }
     }
     .imageBig {
+      margin: 1rem 0;
       padding: 1rem;
+      max-height: 80vh;
+      background-color: #fff;
+      border: 1px solid $primary-color;
+      overflow: hidden;
       img {
         width: 100%;
-        border: 1px solid $primary-color;
-        margin-right: 1rem;
-        opacity: 0;
-        
-      }
-      // img:not(:first-child) {
-      //   display: none;
-      // }
-      img.opaque {
-        opacity: 1;
+        @include transition(transform 0.7s ease-in-out);
       }
     }
   }
-
+  .details {
+    padding: 1rem 1rem 0 2rem;
+    opacity: 0;
+    @include animation(1s, fade, forwards, 0.5s);
+      @include keyframes(fade){
+        100% {
+          opacity: 1;
+        }
+      }
+    p.price {
+      margin-top: 1.5rem;
+      font-size: 2rem;
+      letter-spacing: 2px;
+      color: $light-grey;
+    }
+    .description {
+      margin-top: 3rem;
+      font-size: 1.1rem;
+    }
+    .dimensions {
+      margin-top: 3rem;
+      ul {
+        font-size: 1rem;
+        li {
+          margin-right: 1rem;
+        }
+      }
+    }
+    .btn-primary {
+      margin-top: 5rem;
+      background-color: $primary-color;
+      border-color: $primary-color;
+      &:hover {
+        color: $dark-color;
+      }
+      &:active {
+        background-color: $primary-color;
+        border-color: $primary-color;
+      }
+    }
+  }
 }
 
 // Footer Styling

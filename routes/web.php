@@ -11,13 +11,7 @@
 |
 */
 
-
 Auth::routes();
-
-// Public routes
-Route::get('/', 'HomeController@index')->name('home');
-Route::get('/{category}', 'HomeController@showAll')->name('showAll');
-Route::get('/{category}/{product}', 'HomeController@showOne')->name('showOne');
 
 // Admin Panel Routes
 Route::get('/admin', 'AdminController@index')->name('admin');
@@ -66,4 +60,9 @@ Route::resource('admin/users', 'UserController');
 // Route::get('admin/users/{user}/edit', 'UserController@edit')->name('users.edit');
 // Route::patch('admin/users/{user}', 'UserController@update')->name('users.update');
 Route::delete('admin/users/{user}', 'UserController@destroy')->name('users.destroy');
+
+// Public routes
+Route::get('/', 'HomeController@index')->name('home');
+Route::get('/{category}', 'HomeController@showAll')->name('showAll');
+Route::get('/{category}/{product}', 'HomeController@showOne')->name('showOne');
 

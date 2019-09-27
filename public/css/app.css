@@ -11541,9 +11541,47 @@ footer p {
   color: #f7f7f7;
 }
 
+.productHeader {
+  min-height: 8rem;
+  margin: 0;
+}
+
+.productHeader h2 {
+  margin: 0;
+}
+
+.productHeader ul {
+  margin: 0;
+}
+
+.productHeader ul li {
+  position: relative;
+  margin-right: 1.5rem;
+  font-size: 1rem;
+}
+
+.productHeader ul li:last-child a::after {
+  content: "";
+}
+
+.productHeader ul li a {
+  color: #606062;
+  text-decoration: none;
+}
+
+.productHeader ul li a:hover {
+  color: #51a8b1;
+}
+
+.productHeader ul li a::after {
+  position: absolute;
+  top: 0;
+  left: calc(100% + 0.5rem);
+  content: "/";
+}
+
 .product .images {
   opacity: 0;
-  width: 100%;
   -webkit-animation-name: fade;
   animation-name: fade;
   -webkit-animation-duration: 2s;
@@ -11573,7 +11611,7 @@ footer p {
 .product .images .imagesNav li {
   width: 4.5rem;
   list-style-type: none;
-  margin: 1rem;
+  margin: 1rem 1rem 1rem 0;
 }
 
 .product .images .imagesNav li img {
@@ -11595,18 +11633,87 @@ footer p {
 }
 
 .product .images .imageBig {
+  margin: 1rem 0;
   padding: 1rem;
+  max-height: 80vh;
+  background-color: #fff;
+  border: 1px solid #51a8b1;
+  overflow: hidden;
 }
 
 .product .images .imageBig img {
   width: 100%;
-  border: 1px solid #51a8b1;
-  margin-right: 1rem;
-  opacity: 0;
+  transition: transform 0.7s ease-in-out;
 }
 
-.product .images .imageBig img.opaque {
-  opacity: 1;
+@media (prefers-reduced-motion: reduce) {
+  .product .images .imageBig img {
+    transition: none;
+  }
+}
+
+.product .details {
+  padding: 1rem 1rem 0 2rem;
+  opacity: 0;
+  -webkit-animation-name: fade;
+  animation-name: fade;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+  -webkit-animation-delay: 0.5s;
+  animation-delay: 0.5s;
+}
+
+@-webkit-keyframes fade {
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fade {
+  100% {
+    opacity: 1;
+  }
+}
+
+.product .details p.price {
+  margin-top: 1.5rem;
+  font-size: 2rem;
+  letter-spacing: 2px;
+  color: #aaaaab;
+}
+
+.product .details .description {
+  margin-top: 3rem;
+  font-size: 1.1rem;
+}
+
+.product .details .dimensions {
+  margin-top: 3rem;
+}
+
+.product .details .dimensions ul {
+  font-size: 1rem;
+}
+
+.product .details .dimensions ul li {
+  margin-right: 1rem;
+}
+
+.product .details .btn-primary {
+  margin-top: 5rem;
+  background-color: #51a8b1;
+  border-color: #51a8b1;
+}
+
+.product .details .btn-primary:hover {
+  color: #606062;
+}
+
+.product .details .btn-primary:active {
+  background-color: #51a8b1;
+  border-color: #51a8b1;
 }
 
 footer .footerUpper {
