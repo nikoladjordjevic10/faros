@@ -49,4 +49,12 @@ class HomeController extends Controller
 
   }
 
+  public function contact(){
+
+    $categories = Category::all();
+
+    return view('contact', compact('categories'));
+
+  }
+
 }

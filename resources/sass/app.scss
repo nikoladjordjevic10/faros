@@ -727,6 +727,7 @@ footer {
       margin-top: 5rem;
       background-color: $primary-color;
       border-color: $primary-color;
+      border-radius: 0;
       &:hover {
         color: $dark-color;
       }
@@ -734,6 +735,58 @@ footer {
         background-color: $primary-color;
         border-color: $primary-color;
       }
+    }
+  }
+}
+
+// Contact Page Styling
+
+.contact {
+  margin-top: 3rem;
+  .contactInfo {
+    padding: 1rem;
+    i {
+      font-size: 2rem;
+    }
+    .content {
+      margin: 0.5rem 0 0 1.2rem;
+      
+      h4 {
+        font-weight: 700;
+        text-transform: uppercase;
+        margin-bottom: 1rem;
+      }
+      p {
+        font-size: 1rem;
+        margin-bottom: 0;
+        color: $light-grey;
+      }
+    }
+  }
+  .contactFormHeader {
+    margin-top: 4rem;
+    h2 {
+      font-weight: 700;
+    }
+    p {
+      font-size: 1rem;
+    }
+  }
+  #contactForm form input, #contactForm form textarea {
+    border-radius: 0;
+    border-color: $light-color;
+    padding: 1.5rem;
+  }
+  #contactForm {
+    .btn-lg {
+      border-radius: 0;
+    }
+    input::placeholder, textarea::placeholder {
+      color: $light-grey;
+    }
+    .contactMap {
+     
+     }
     }
   }
 }

@@ -11705,6 +11705,7 @@ footer p {
   margin-top: 5rem;
   background-color: #51a8b1;
   border-color: #51a8b1;
+  border-radius: 0;
 }
 
 .product .details .btn-primary:hover {
@@ -11714,6 +11715,87 @@ footer p {
 .product .details .btn-primary:active {
   background-color: #51a8b1;
   border-color: #51a8b1;
+}
+
+.contact {
+  margin-top: 3rem;
+}
+
+.contact .contactInfo {
+  padding: 1rem;
+}
+
+.contact .contactInfo i {
+  font-size: 2rem;
+}
+
+.contact .contactInfo .content {
+  margin: 0.5rem 0 0 1.2rem;
+}
+
+.contact .contactInfo .content h4 {
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.contact .contactInfo .content p {
+  font-size: 1rem;
+  margin-bottom: 0;
+  color: #aaaaab;
+}
+
+.contact .contactFormHeader {
+  margin-top: 4rem;
+}
+
+.contact .contactFormHeader h2 {
+  font-weight: 700;
+}
+
+.contact .contactFormHeader p {
+  font-size: 1rem;
+}
+
+.contact #contactForm form input,
+.contact #contactForm form textarea {
+  border-radius: 0;
+  border-color: #f7f7f7;
+  padding: 1.5rem;
+}
+
+.contact #contactForm .btn-lg,
+.contact #contactForm .btn-group-lg > .btn {
+  border-radius: 0;
+}
+
+.contact #contactForm input::-webkit-input-placeholder,
+.contact #contactForm textarea::-webkit-input-placeholder {
+  color: #aaaaab;
+}
+
+.contact #contactForm input::-moz-placeholder,
+.contact #contactForm textarea::-moz-placeholder {
+  color: #aaaaab;
+}
+
+.contact #contactForm input:-ms-input-placeholder,
+.contact #contactForm textarea:-ms-input-placeholder {
+  color: #aaaaab;
+}
+
+.contact #contactForm input::-ms-input-placeholder,
+.contact #contactForm textarea::-ms-input-placeholder {
+  color: #aaaaab;
+}
+
+.contact #contactForm input::placeholder,
+.contact #contactForm textarea::placeholder {
+  color: #aaaaab;
+}
+
+.contact #contactForm .contactMap iframe #gmap_canvas {
+  width: 100%;
 }
 
 footer .footerUpper {
