@@ -10802,6 +10802,11 @@ h1 > span {
   background-color: #51a8b1;
 }
 
+.card-auth .card-header {
+  background-color: #51a8b1;
+  color: #f7f7f7;
+}
+
 form .label-admin {
   font-size: 1.1rem;
 }
@@ -11792,10 +11797,6 @@ footer p {
 .contact #contactForm input::placeholder,
 .contact #contactForm textarea::placeholder {
   color: #aaaaab;
-}
-
-.contact #contactForm .contactMap iframe #gmap_canvas {
-  width: 100%;
 }
 
 footer .footerUpper {

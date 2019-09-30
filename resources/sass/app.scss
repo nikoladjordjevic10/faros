@@ -154,6 +154,15 @@ span, h1>span {
   }
 }
 
+// Content Auth Pages Styling 
+
+.card-auth {
+  .card-header {
+    background-color: $primary-color;
+    color: $light-color;
+  }
+}
+
 // Form Fields Styling
 
 form {
@@ -783,10 +792,6 @@ footer {
     }
     input::placeholder, textarea::placeholder {
       color: $light-grey;
-    }
-    .contactMap {
-     
-     }
     }
   }
 }
