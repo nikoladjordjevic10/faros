@@ -89,13 +89,13 @@
               </div>
             </div>
 
-            <button type="submit" class="btn btn-lg btn-primary mt-5">Submit</button>
+            <button type="submit" class="btn btn-lg btn-primary mt-5 shadow">Submit</button>
 
           </form>
         </div>
 
         <div class="col-12 col-lg-6 pl-0 pl-lg-4 mt-5 mt-lg-4 contactMap">
-          <div class="mapouter"><div class="gmap_canvas"><iframe width="100%" height="400" id="gmap_canvas" src="https://maps.google.com/maps?q=faros%20stolice&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://www.embedgooglemap.net/blog/nordvpn-coupon-code/">nordvpn locations</a></div><style>.mapouter{position:relative;text-align:right;height:400px;width:500px;}.gmap_canvas {overflow:hidden;background:none!important;height:400px;width:500px;}</style></div>
+          <div class="mapouter"><div class="gmap_canvas"><iframe class="shadow" width="100%" height="400" id="gmap_canvas" src="https://maps.google.com/maps?q=faros%20stolice&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://www.embedgooglemap.net/blog/nordvpn-coupon-code/">nordvpn locations</a></div><style>.mapouter{position:relative;text-align:right;height:400px;width:500px;}.gmap_canvas {overflow:hidden;background:none!important;height:400px;width:500px;}</style></div>
         </div>
 
       </div>
