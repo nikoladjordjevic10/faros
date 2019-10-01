@@ -25,6 +25,16 @@ a {
   }
 }
 
+a.disabled-link-primary {
+  color: $primary-color!important;
+  pointer-events: none;
+}
+
+a.disabled-link-dark {
+  color: $dark-color!important;
+  pointer-events: none;
+}
+
 ul {
   list-style: none;
 }
@@ -313,7 +323,7 @@ footer {
     background-position: center;
     opacity: 0;
     margin-right: -100px;
-    @include animation(1s, slideRight, forwards, 1s);
+    @include animation(1s, slideRight, forwards, 0.5s);
     @include keyframes(slideRight){
       100% {
         margin-right: 0px;
@@ -333,16 +343,16 @@ footer {
       }
     }
     p:nth-of-type(1){
-      @include animation(1s, slideLeft, forwards, 1s);
+      @include animation(1s, slideLeft, forwards, 0.5s);
       font-size: 2rem;
     }
     p:nth-of-type(2){
-      @include animation(1s, slideLeft, forwards, 1.5s);
+      @include animation(1s, slideLeft, forwards, 1s);
       font-size: 2.5rem;
       font-weight: 700;
     }
     p:nth-of-type(3){
-      @include animation(1s, slideLeft, forwards, 2s);
+      @include animation(1s, slideLeft, forwards, 1.5s);
       font-size: 1.5rem;
     }
     @include keyframes(slideLeft){
@@ -385,7 +395,7 @@ footer {
         @include transition(all 0.2s ease-in);
       }
     }
-    @include animation(1s, fade, forwards, 0);
+    @include animation(1s, fade, forwards, 1.5s);
     @include keyframes(fade){
       100% {
         opacity: 1;
@@ -658,7 +668,6 @@ footer {
           left: calc(100% + 0.5rem);
           content: "/";
         }
-        
       }
     }
   }
@@ -701,6 +710,7 @@ footer {
       img {
         width: 100%;
         @include transition(transform 0.7s ease-in-out);
+        margin-right: 1rem;
       }
     }
   }

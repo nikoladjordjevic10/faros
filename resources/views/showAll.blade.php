@@ -6,259 +6,45 @@
 
 {{-- Popular Products list start --}}
 <div class="container">
+  <div class="row productHeader justify-content-between align-items-center mt-3 pl-4">
+    <h1> {{ $category->name }} </h1>
+    <ul class="d-flex">
+      <li><a href="{{ route('home') }}">Home</a></li>
+      <li><a class="disabled-link-primary">{{ $category->name }}</a></li>
+    </ul>
+  </div>
   <div class="row">
-    <div class="productsList category w-100 mt-5">
-      <h1> {{ $category->name }} </h1>
+    <div class="productsList category w-100">
       <ul class="d-flex flex-wrap">
-
-        <div class="col-xl-4 col-md-6 my-4">
+        
+        @foreach($products as $product)
+        <div class="col-xl-4 col-md-6 mb-5">
           <li class="shadow mx-auto">
-            <a href="#">
-              <div class="productsListImage" style="background-image: url(../storage/images/BOB_R_HB.png)">
+            <a href="{{ route('showOne', ['category' =>$category, $product->id]) }}">
+              <div class="productsListImage" style="background-image: url({{ asset('storage/images/'. $product->images->first()->name) }})">
                 <div class="productsListBg">
                 </div>
                 <div class="productsListLinks">
-                  <a href="#"><i class="fas fa-plus details"></i></a>
+                  <a href="{{ route('showOne', ['category' =>$category, $product->id]) }}"><i class="fas fa-plus details"></i></a>
                 </div>
               </div>
             </a>
             <div class="productsListInfo">
-              <a href="#">
-                <h4>BOB HB</h4>
+              <a href="{{ route('showOne', ['category' =>$category, $product->id]) }}">
+                <h4>{{ $product->name }}</h4>
               </a>
-              <p>11.880,00 din</p>
+              <p>{{ $product->formatPrice() }}</p>
             </div>
           </li>
         </div>
-
-
-        <div class="col-xl-4 col-md-6 my-4">
-          <li class="shadow mx-auto">
-            <a href="#">
-              <div class="productsListImage" style="background-image: url(../storage/images/BOB_R_HB.png)">
-                <div class="productsListBg">
-                </div>
-                <div class="productsListLinks">
-                  <a href="#"><i class="fas fa-plus details"></i></a>
-                </div>
-              </div>
-            </a>
-            <div class="productsListInfo">
-              <a href="#">
-                <h4>BOB HB</h4>
-              </a>
-              <p>11.880,00 din</p>
-            </div>
-          </li>
-        </div>
-
-        <div class="col-xl-4 col-md-6 my-4">
-          <li class="shadow mx-auto">
-            <a href="#">
-              <div class="productsListImage" style="background-image: url(../storage/images/BOB_R_HB.png)">
-                <div class="productsListBg">
-                </div>
-                <div class="productsListLinks">
-                  <a href="#"><i class="fas fa-plus details"></i></a>
-                </div>
-              </div>
-            </a>
-            <div class="productsListInfo">
-              <a href="#">
-                <h4>BOB HB</h4>
-              </a>
-              <p>11.880,00 din</p>
-            </div>
-          </li>
-        </div>
-
-        <div class="col-xl-4 col-md-6 my-4">
-          <li class="shadow mx-auto">
-            <a href="#">
-              <div class="productsListImage" style="background-image: url(../storage/images/BOB_R_HB.png)">
-                <div class="productsListBg">
-                </div>
-                <div class="productsListLinks">
-                  <a href="#"><i class="fas fa-plus details"></i></a>
-                </div>
-              </div>
-            </a>
-            <div class="productsListInfo">
-              <a href="#">
-                <h4>BOB HB</h4>
-              </a>
-              <p>11.880,00 din</p>
-            </div>
-          </li>
-        </div>
-
-        <div class="col-xl-4 col-md-6 my-4">
-          <li class="shadow mx-auto">
-            <a href="#">
-              <div class="productsListImage" style="background-image: url(../storage/images/BOB_R_HB.png)">
-                <div class="productsListBg">
-                </div>
-                <div class="productsListLinks">
-                  <a href="#"><i class="fas fa-plus details"></i></a>
-                </div>
-              </div>
-            </a>
-            <div class="productsListInfo">
-              <a href="#">
-                <h4>BOB HB</h4>
-              </a>
-              <p>11.880,00 din</p>
-            </div>
-          </li>
-        </div>
-
-        <div class="col-xl-4 col-md-6 my-4">
-          <li class="shadow mx-auto">
-            <a href="#">
-              <div class="productsListImage" style="background-image: url(../storage/images/BOB_R_HB.png)">
-                <div class="productsListBg">
-                </div>
-                <div class="productsListLinks">
-                  <a href="#"><i class="fas fa-plus details"></i></a>
-                </div>
-              </div>
-            </a>
-            <div class="productsListInfo">
-              <a href="#">
-                <h4>BOB HB</h4>
-              </a>
-              <p>11.880,00 din</p>
-            </div>
-          </li>
-        </div>
-
-        <div class="col-xl-4 col-md-6 my-4">
-          <li class="shadow mx-auto">
-            <a href="#">
-              <div class="productsListImage" style="background-image: url(../storage/images/BOB_R_HB.png)">
-                <div class="productsListBg">
-                </div>
-                <div class="productsListLinks">
-                  <a href="#"><i class="fas fa-plus details"></i></a>
-                </div>
-              </div>
-            </a>
-            <div class="productsListInfo">
-              <a href="#">
-                <h4>BOB HB</h4>
-              </a>
-              <p>11.880,00 din</p>
-            </div>
-          </li>
-        </div>
-
-
-        <div class="col-xl-4 col-md-6 my-4">
-          <li class="shadow mx-auto">
-            <a href="#">
-              <div class="productsListImage" style="background-image: url(../storage/images/BOB_R_HB.png)">
-                <div class="productsListBg">
-                </div>
-                <div class="productsListLinks">
-                  <a href="#"><i class="fas fa-plus details"></i></a>
-                </div>
-              </div>
-            </a>
-            <div class="productsListInfo">
-              <a href="#">
-                <h4>BOB HB</h4>
-              </a>
-              <p>11.880,00 din</p>
-            </div>
-          </li>
-        </div>
-
-        <div class="col-xl-4 col-md-6 my-4">
-          <li class="shadow mx-auto">
-            <a href="#">
-              <div class="productsListImage" style="background-image: url(../storage/images/BOB_R_HB.png)">
-                <div class="productsListBg">
-                </div>
-                <div class="productsListLinks">
-                  <a href="#"><i class="fas fa-plus details"></i></a>
-                </div>
-              </div>
-            </a>
-            <div class="productsListInfo">
-              <a href="#">
-                <h4>BOB HB</h4>
-              </a>
-              <p>11.880,00 din</p>
-            </div>
-          </li>
-        </div>
-
-        <div class="col-xl-4 col-md-6 my-4">
-          <li class="shadow mx-auto">
-            <a href="#">
-              <div class="productsListImage" style="background-image: url(../storage/images/BOB_R_HB.png)">
-                <div class="productsListBg">
-                </div>
-                <div class="productsListLinks">
-                  <a href="#"><i class="fas fa-plus details"></i></a>
-                </div>
-              </div>
-            </a>
-            <div class="productsListInfo">
-              <a href="#">
-                <h4>BOB HB</h4>
-              </a>
-              <p>11.880,00 din</p>
-            </div>
-          </li>
-        </div>
-
-        <div class="col-xl-4 col-md-6 my-4">
-          <li class="shadow mx-auto">
-            <a href="#">
-              <div class="productsListImage" style="background-image: url(../storage/images/BOB_R_HB.png)">
-                <div class="productsListBg">
-                </div>
-                <div class="productsListLinks">
-                  <a href="#"><i class="fas fa-plus details"></i></a>
-                </div>
-              </div>
-            </a>
-            <div class="productsListInfo">
-              <a href="#">
-                <h4>BOB HB</h4>
-              </a>
-              <p>11.880,00 din</p>
-            </div>
-          </li>
-        </div>
-
-        <div class="col-xl-4 col-md-6 my-4">
-          <li class="shadow mx-auto">
-            <a href="#">
-              <div class="productsListImage" style="background-image: url(../storage/images/BOB_R_HB.png)">
-                <div class="productsListBg">
-                </div>
-                <div class="productsListLinks">
-                  <a href="#"><i class="fas fa-plus details"></i></a>
-                </div>
-              </div>
-            </a>
-            <div class="productsListInfo">
-              <a href="#">
-                <h4>BOB HB</h4>
-              </a>
-              <p>11.880,00 din</p>
-            </div>
-          </li>
-        </div>
+        @endforeach
 
       </ul>
     </div>
   </div>
 </div>
 
-{{ $chairs->links() }}
+{{ $products->links() }}
 {{-- Popular Products list end --}}
 
 

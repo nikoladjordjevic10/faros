@@ -30,7 +30,7 @@
         <div class="d-flex justify-content-between p-2">
           <div class="topBarPhone">
             <i class="fas fa-phone"></i>
-            Kontakt Telefoni:&nbsp;&nbsp;
+            Contact Phones:&nbsp;&nbsp;
             <span> +381(11)2406-314 &nbsp; +381(11)2420-304 &nbsp;
             +381(63) 289-599 &nbsp; +381(63)239-697</span>
           </div>

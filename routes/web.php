@@ -64,6 +64,6 @@ Route::delete('admin/users/{user}', 'UserController@destroy')->name('users.destr
 // Public routes
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/contact', 'HomeController@contact')->name('contact');
-Route::get('/{category}', 'HomeController@showAll')->name('showAll');
+Route::get('/category/{category}', 'HomeController@showAll')->name('showAll');
 Route::get('/{category}/{product}', 'HomeController@showOne')->name('showOne');
 

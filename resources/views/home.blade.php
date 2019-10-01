@@ -9,7 +9,7 @@
     <div class="col-6 sliderText d-flex flex-column justify-content-around">
       <p>Faros Store</p>
       <p>Office Chairs</p>
-      <p><a href="#">Discover now</a></p>
+      <p><a href="{{ route('showAll', 1) }}">Discover now</a></p>
     </div>
     <div class="col-6">
       <div class="sliderImage" style="background-image: url(../storage/images/BOB_R_HB.png)"></div>
@@ -20,7 +20,7 @@
     <div class="col-6 sliderText d-flex flex-column justify-content-around">
       <p>Faros Store</p>
       <p>Modern Chairs</p>
-      <p><a href="#">Discover now</a></p>
+      <p><a href="{{ route('showAll', 2) }}">Discover now</a></p>
     </div>
     <div class="col-6">
       <div class="sliderImage" style="background-image: url(../storage/images/twist.png)"></div>
@@ -31,7 +31,7 @@
     <div class="col-6 sliderText d-flex flex-column justify-content-around">
       <p>Faros Store</p>
       <p>Club Chairs</p>
-      <p><a href="#">Discover now</a></p>
+      <p><a href="{{ route('showAll', 5) }}">Discover now</a></p>
     </div>
     <div class="col-6">
       <div class="sliderImage" style="background-image: url(../storage/images/E07.png)"></div>
@@ -71,7 +71,9 @@
         @if(count($categories) > 0)
         <ul class="d-flex flex-column flex-md-row justify-content-sm-end align-items-center m-0">
           @foreach($categories as $category)
-          <li><a href="{{ route('home') }}">{{ $category->name }}</a></li>
+          <li><a href="{{ route('home') }}"
+              class="@if($category->id == $defaultCategory->id) disabled-link-dark @endif">{{ $category->name }}</a>
+          </li>
           @endforeach
         </ul>
         @endif
@@ -87,79 +89,28 @@
     <div class="productsList w-100">
       <ul class="d-flex flex-wrap">
 
-        
+        @foreach($popularProducts as $popularProduct)
         <div class="col-xl-3 col-md-6 mt-4">
           <li class="shadow mx-auto">
-            <a href="#">
-              <div class="productsListImage" style="background-image: url(../storage/images/BOB_R_HB.png)">
+            <a href="{{ route('showOne', [$popularProduct->category_id, $popularProduct->id]) }}">
+              <div class="productsListImage"
+                style="background-image: url({{ asset('storage/images/'. $popularProduct->images->first()->name) }})">
                 <div class="productsListBg">
                 </div>
                 <div class="productsListLinks">
-                  <a href="#"><i class="fas fa-plus details"></i></a>
+                  <a href="{{ route('showOne', [$popularProduct->category_id, $popularProduct->id]) }}"><i class="fas fa-plus details"></i></a>
                 </div>
               </div>
             </a>
             <div class="productsListInfo">
-              <a href="#"><h4>BOB HB</h4></a>
-              <p>11.880,00 din</p>
+              <a href="{{ route('showOne', [$popularProduct->category_id, $popularProduct->id]) }}">
+                <h4>{{ $popularProduct->name }}</h4>
+              </a>
+              <p>{{ $popularProduct->formatPrice() }}</p>
             </div>
           </li>
         </div>
-
-       
-        <div class="col-xl-3 col-md-6 mt-4">
-          <li class="shadow mx-auto">
-            <a href="#">
-              <div class="productsListImage" style="background-image: url(../storage/images/BOB_R_HB.png)">
-                <div class="productsListBg">
-                </div>
-                <div class="productsListLinks">
-                  <a href="#"><i class="fas fa-plus details"></i></a>
-                </div>
-              </div>
-            </a>
-            <div class="productsListInfo">
-              <a href="#"><h4>BOB HB</h4></a>
-              <p>11.880,00 din</p>
-            </div>
-          </li>
-        </div>
-
-        <div class="col-xl-3 col-md-6 mt-4">
-          <li class="shadow mx-auto">
-            <a href="#">
-              <div class="productsListImage" style="background-image: url(../storage/images/BOB_R_HB.png)">
-                <div class="productsListBg">
-                </div>
-                <div class="productsListLinks">
-                  <a href="#"><i class="fas fa-plus details"></i></a>
-                </div>
-              </div>
-            </a>
-            <div class="productsListInfo">
-              <a href="#"><h4>BOB HB</h4></a>
-              <p>11.880,00 din</p>
-            </div>
-          </li>
-        </div>
-
-        <div class="col-xl-3 col-md-6 mt-4">
-          <li class="shadow mx-auto">
-            <a href="#">
-              <div class="productsListImage" style="background-image: url(../storage/images/BOB_R_HB.png)">
-                <div class="productsListBg">
-                </div>
-                <div class="productsListLinks">
-                  <a href="#"><i class="fas fa-plus details"></i></a>
-                </div>
-              </div>
-            </a>
-            <div class="productsListInfo">
-              <a href="#"><h4>BOB HB</h4></a>
-              <p>11.880,00 din</p>
-            </div>
-          </li>
-        </div>
+        @endforeach
 
       </ul>
     </div>
@@ -179,7 +130,9 @@
         @if(count($categories) > 0)
         <ul class="d-flex flex-column flex-md-row justify-content-sm-end align-items-center m-0">
           @foreach($categories as $category)
-          <li><a href="{{ route('home') }}">{{ $category->name }}</a></li>
+          <li><a href="{{ route('home') }}"
+              class="@if($category->id == $defaultCategory->id) disabled-link-dark @endif">{{ $category->name }}</a>
+          </li>
           @endforeach
         </ul>
         @endif
@@ -195,79 +148,28 @@
     <div class="productsList w-100">
       <ul class="d-flex flex-wrap">
 
-        
+        @foreach($newProducts as $newProduct)
         <div class="col-xl-3 col-md-6 mt-4">
           <li class="shadow mx-auto">
-            <a href="#">
-              <div class="productsListImage" style="background-image: url(../storage/images/BOB_R_HB.png)">
+            <a href="{{ route('showOne', [$newProduct->category_id, $newProduct->id]) }}">
+              <div class="productsListImage"
+                style="background-image: url({{ asset('storage/images/'. $newProduct->images->first()->name) }})">
                 <div class="productsListBg">
                 </div>
                 <div class="productsListLinks">
-                  <a href="#"><i class="fas fa-plus details"></i></a>
+                  <a href="{{ route('showOne', [$newProduct->category_id, $newProduct->id]) }}"><i class="fas fa-plus details"></i></a>
                 </div>
               </div>
             </a>
             <div class="productsListInfo">
-              <a href="#"><h4>BOB HB</h4></a>
-              <p>11.880,00 din</p>
+              <a href="{{ route('showOne', [$newProduct->category_id, $newProduct->id]) }}">
+                <h4>{{ $newProduct->name }}</h4>
+              </a>
+              <p>{{ $newProduct->formatPrice() }}</p>
             </div>
           </li>
         </div>
-
-       
-        <div class="col-xl-3 col-md-6 mt-4">
-          <li class="shadow mx-auto">
-            <a href="#">
-              <div class="productsListImage" style="background-image: url(../storage/images/BOB_R_HB.png)">
-                <div class="productsListBg">
-                </div>
-                <div class="productsListLinks">
-                  <a href="#"><i class="fas fa-plus details"></i></a>
-                </div>
-              </div>
-            </a>
-            <div class="productsListInfo">
-              <a href="#"><h4>BOB HB</h4></a>
-              <p>11.880,00 din</p>
-            </div>
-          </li>
-        </div>
-
-        <div class="col-xl-3 col-md-6 mt-4">
-          <li class="shadow mx-auto">
-            <a href="#">
-              <div class="productsListImage" style="background-image: url(../storage/images/BOB_R_HB.png)">
-                <div class="productsListBg">
-                </div>
-                <div class="productsListLinks">
-                  <a href="#"><i class="fas fa-plus details"></i></a>
-                </div>
-              </div>
-            </a>
-            <div class="productsListInfo">
-              <a href="#"><h4>BOB HB</h4></a>
-              <p>11.880,00 din</p>
-            </div>
-          </li>
-        </div>
-
-        <div class="col-xl-3 col-md-6 mt-4">
-          <li class="shadow mx-auto">
-            <a href="#">
-              <div class="productsListImage" style="background-image: url(../storage/images/BOB_R_HB.png)">
-                <div class="productsListBg">
-                </div>
-                <div class="productsListLinks">
-                  <a href="#"><i class="fas fa-plus details"></i></a>
-                </div>
-              </div>
-            </a>
-            <div class="productsListInfo">
-              <a href="#"><h4>BOB HB</h4></a>
-              <p>11.880,00 din</p>
-            </div>
-          </li>
-        </div>
+        @endforeach
 
       </ul>
     </div>

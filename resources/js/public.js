@@ -72,33 +72,6 @@ $(document).ready(function() {
   
 });
 
-// Slider One Product Page
-
-// const small = document.querySelectorAll(".small"); // dots
-// const big = document.querySelectorAll('.big'); // x
-
-// for (let i = 0; i < small.length; i++){
-//   small[i].addEventListener("click", function(){
-//     currentDiv(i);
-//     small[i].classList.add('selected');
-//   });
-// }
-
-// function currentDiv(n){
-//   showDiv(slideIndex = n + 1);
-// }
-
-// function showDiv(n){
-//   if (n > big.length) {slideIndex = 1}
-//   if (n < 1){slideIndex = big.length}
-//   for(let i = 0; i < big.length; i++){
-//     big[i].style.display = "none";
-//     big[i].classList.remove('faded');
-//     small[i].classList.remove('selected');
-//   }
-//   big[slideIndex - 1].style.display = "flex";
-//   big[slideIndex - 1].classList.add('faded');
-// }
 
 $(document).ready(function() {
   
@@ -112,7 +85,7 @@ $(document).ready(function() {
 
     var indexImg = $(this).parent().index();
 
-    var imgWidth = $(".imageBig img").width();
+    var imgWidth = $(".imageBig img").width() + 16;
     
 
     $(".imageBig img").css("transform", "translateX("+indexImg * -imgWidth+"px)");

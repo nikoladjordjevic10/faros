@@ -187,7 +187,7 @@ class ChairController extends Controller
 
         $imagesStorage = scandir(public_path('storage/images'));
         
-        $imageName = str_replace(' ', '_', $image->getClientOriginalName());
+        $imageName = ucwords(strtolower(str_replace(' ', '_', $image->getClientOriginalName())));
 
         if (!in_array($imageName, $imagesStorage)) {
          

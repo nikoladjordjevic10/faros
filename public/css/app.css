@@ -10665,6 +10665,16 @@ a:hover {
   transition: all 0.2s ease-in;
 }
 
+a.disabled-link-primary {
+  color: #51a8b1 !important;
+  pointer-events: none;
+}
+
+a.disabled-link-dark {
+  color: #606062 !important;
+  pointer-events: none;
+}
+
 ul {
   list-style: none;
 }
@@ -11018,8 +11028,8 @@ footer p {
   animation-duration: 1s;
   -webkit-animation-fill-mode: forwards;
   animation-fill-mode: forwards;
-  -webkit-animation-delay: 1s;
-  animation-delay: 1s;
+  -webkit-animation-delay: 0.5s;
+  animation-delay: 0.5s;
 }
 
 @-webkit-keyframes slideRight {
@@ -11054,8 +11064,8 @@ footer p {
   animation-duration: 1s;
   -webkit-animation-fill-mode: forwards;
   animation-fill-mode: forwards;
-  -webkit-animation-delay: 1s;
-  animation-delay: 1s;
+  -webkit-animation-delay: 0.5s;
+  animation-delay: 0.5s;
   font-size: 2rem;
 }
 
@@ -11066,8 +11076,8 @@ footer p {
   animation-duration: 1s;
   -webkit-animation-fill-mode: forwards;
   animation-fill-mode: forwards;
-  -webkit-animation-delay: 1.5s;
-  animation-delay: 1.5s;
+  -webkit-animation-delay: 1s;
+  animation-delay: 1s;
   font-size: 2.5rem;
   font-weight: 700;
 }
@@ -11079,8 +11089,8 @@ footer p {
   animation-duration: 1s;
   -webkit-animation-fill-mode: forwards;
   animation-fill-mode: forwards;
-  -webkit-animation-delay: 2s;
-  animation-delay: 2s;
+  -webkit-animation-delay: 1.5s;
+  animation-delay: 1.5s;
   font-size: 1.5rem;
 }
 
@@ -11142,8 +11152,8 @@ footer p {
   animation-duration: 1s;
   -webkit-animation-fill-mode: forwards;
   animation-fill-mode: forwards;
-  -webkit-animation-delay: 0;
-  animation-delay: 0;
+  -webkit-animation-delay: 1.5s;
+  animation-delay: 1.5s;
 }
 
 .sliderContainer .previous i,
@@ -11649,6 +11659,7 @@ footer p {
 .product .images .imageBig img {
   width: 100%;
   transition: transform 0.7s ease-in-out;
+  margin-right: 1rem;
 }
 
 @media (prefers-reduced-motion: reduce) {
