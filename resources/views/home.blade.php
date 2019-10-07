@@ -71,8 +71,8 @@
         @if(count($categories) > 0)
         <ul class="d-flex flex-column flex-md-row justify-content-sm-end align-items-center m-0">
           @foreach($categories as $category)
-          <li><a href="{{ route('home') }}"
-              class="@if($category->id == $defaultCategory->id) disabled-link-dark @endif">{{ $category->name }}</a>
+          <li class="cat_id"><a href="{{ route('home') }}"
+              class="changeCatPopular @if($category->id == $defaultCategory->id) disabled-link-dark @endif" data-value="{{ $category->id }}">{{ $category->name }}</a>
           </li>
           @endforeach
         </ul>
@@ -87,7 +87,7 @@
 <div class="container">
   <div class="row">
     <div class="productsList w-100">
-      <ul class="d-flex flex-wrap">
+      <ul class="d-flex flex-wrap popularProducts">
 
         @foreach($popularProducts as $popularProduct)
         <div class="col-xl-3 col-md-6 mt-4">
@@ -130,8 +130,8 @@
         @if(count($categories) > 0)
         <ul class="d-flex flex-column flex-md-row justify-content-sm-end align-items-center m-0">
           @foreach($categories as $category)
-          <li><a href="{{ route('home') }}"
-              class="@if($category->id == $defaultCategory->id) disabled-link-dark @endif">{{ $category->name }}</a>
+          <li class="cat_id"><a href="{{ route('home') }}"
+              class="changeCatNew @if($category->id == $defaultCategory->id) disabled-link-dark @endif" data-value="{{ $category->id }}">{{ $category->name }}</a>
           </li>
           @endforeach
         </ul>
@@ -139,6 +139,7 @@
       </div>
     </div>
   </div>
+
 </div>
 {{-- New Products navigation end--}}
 
@@ -146,7 +147,7 @@
 <div class="container">
   <div class="row">
     <div class="productsList w-100">
-      <ul class="d-flex flex-wrap">
+      <ul class="d-flex flex-wrap newProducts">
 
         @foreach($newProducts as $newProduct)
         <div class="col-xl-3 col-md-6 mt-4">
@@ -165,7 +166,7 @@
               <a href="{{ route('showOne', [$newProduct->category_id, $newProduct->id]) }}">
                 <h4>{{ $newProduct->name }}</h4>
               </a>
-              <p>{{ $newProduct->formatPrice() }}</p>
+              <p class="newProductsPrice">{{ $newProduct->formatPrice() }}</p>
             </div>
           </li>
         </div>

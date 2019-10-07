@@ -11274,6 +11274,40 @@ footer p {
           animation-delay: 1s;
 }
 
+.productsList ul .productsError {
+  font-size: 2rem;
+  opacity: 0;
+  margin-top: 6rem;
+  -webkit-animation-name: delayed;
+  animation-name: delayed;
+  -webkit-animation-duration: 1.5s;
+  animation-duration: 1.5s;
+  -webkit-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+  -webkit-animation-delay: 0;
+  animation-delay: 0;
+}
+
+@-webkit-keyframes delayed {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes delayed {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
 .productsList li {
   width: 15rem;
   height: 15rem;

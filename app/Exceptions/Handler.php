@@ -46,6 +46,11 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
-        return parent::render($request, $exception);
+      if ($exception instanceof \App\Exceptions\NoProductsException)  {
+        return $exception->render($request);
+      }
+      
+      return parent::render($request, $exception);
+
     }
 }
