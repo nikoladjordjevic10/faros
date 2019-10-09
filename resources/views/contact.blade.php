@@ -5,6 +5,13 @@
 @section('content')
 
 <div class="container">
+  @if(session('message'))
+    <div class="row">
+      <div class="alert alert-success alert-custom-public text-center w-100 shadow">
+        {{ session('message') }}
+      </div>
+    </div>
+  @endif
   <div class="contact px-3 px-md-0">
     {{-- Start of contact info --}}
     <div class="row shadow">
@@ -66,26 +73,51 @@
     <div class="row">
       <div class="d-flex flex-wrap w-100">
         <div id="contactForm" class="col-12 col-lg-6 pl-0 d-flex flex-wrap">
-          <form action="" method="">
-            
+          <form action="{{ route('contactSend') }}" method="POST" novalidate>
+            @csrf
             <div class="form-row">
               <div class="col-12 col-lg-6 mt-4">
-                <input type="text" class="form-control form-control-lg shadow" placeholder="Name">
+                <input type="text" class="form-control form-control-lg shadow @error('name') is-invalid @enderror" placeholder="Name" name="name" value="{{ old('name') ?? '' }}">
+                
+                @error('name')
+                  <span class="invalid-feedback admin" role="alert">
+                    <strong>{{ $message }}</strong>
+                  </span>
+                @enderror
               </div>
+             
               <div class="col-12 col-lg-6 mt-4">
-                <input type="text" class="form-control form-control-lg shadow" placeholder="Phone">
+                <input type="text" class="form-control form-control-lg shadow @error('phone') is-invalid @enderror" placeholder="Phone" name="phone" value="{{ old('phone') ?? '' }}">
+                
+                @error('phone')
+                  <span class="invalid-feedback admin" role="alert">
+                    <strong>{{ $message }}</strong>
+                  </span>
+                @enderror
               </div>
             </div>
 
             <div class="form-row mt-4">
               <div class="col-12">
-                <input type="email" class="form-control form-control-lg shadow" placeholder="Email">
+                <input type="email" class="form-control form-control-lg shadow @error('email') is-invalid @enderror" placeholder="Email" name="email" value="{{ old('email') ?? '' }}">
+
+                @error('email')
+                  <span class="invalid-feedback admin" role="alert">
+                    <strong>{{ $message }}</strong>
+                  </span>
+                @enderror
               </div>
             </div>
 
             <div class="form-row mt-4">
               <div class="col-12">
-                <textarea class="form-control form-control-lg shadow" placeholder="Message" rows="10"></textarea>
+                <textarea class="form-control form-control-lg shadow @error('message') is-invalid @enderror" placeholder="Message" rows="10" name="message">{{ old('message') ?? '' }}</textarea>
+
+                @error('message')
+                  <span class="invalid-feedback admin" role="alert">
+                    <strong>{{ $message }}</strong>
+                  </span>
+                @enderror
               </div>
             </div>
 

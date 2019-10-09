@@ -769,7 +769,13 @@ footer {
 }
 
 // Contact Page Styling
-
+.alert-custom-public {
+  background-color: $primary-color;
+  border-color: $primary-color;
+  color: $light-color;
+  font-size: 1.1rem;
+  border-radius: 0;
+}
 .contact {
   margin-top: 3rem;
   .contactInfo {

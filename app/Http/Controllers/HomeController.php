@@ -5,10 +5,12 @@ namespace App\Http\Controllers;
 use App\Category;
 use App\Chair;
 use App\Exceptions\NoProductsException;
+use App\Mail\ContactPageMail;
 use App\Table;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
 
 class HomeController extends Controller
@@ -108,6 +110,22 @@ class HomeController extends Controller
     $categories = Category::all();
 
     return view('contact', compact('categories'));
+
+  }
+
+  public function contactSend()
+  {
+
+    $data =  request()->validate([
+      'name' => 'required',
+      'phone' => 'required|regex:/^([0-9\s\-\+\/\(\)]*)$/',
+      'email' => 'required|email',
+      'message' => 'required'
+    ]);
+
+    Mail::to('office@faros.rs')->send(new ContactPageMail($data));
+
+    return redirect()->back()->with('message', 'Thank you for contacting us. Message successfully sent!');
 
   }
 

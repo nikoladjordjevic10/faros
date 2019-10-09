@@ -65,6 +65,7 @@ Route::delete('admin/users/{user}', 'UserController@destroy')->name('users.destr
 Route::get('/', 'HomeController@index')->name('home');
 Route::post('/', 'HomeController@indexAjax')->name('home');
 Route::get('/contact', 'HomeController@contact')->name('contact');
+Route::post('/contact', 'HomeController@contactSend')->name('contactSend');
 Route::get('/category/{category}', 'HomeController@showAll')->name('showAll');
 Route::get('/{category}/{product}', 'HomeController@showOne')->name('showOne');
 

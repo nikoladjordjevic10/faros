@@ -11767,6 +11767,14 @@ footer p {
   border-color: #51a8b1;
 }
 
+.alert-custom-public {
+  background-color: #51a8b1;
+  border-color: #51a8b1;
+  color: #f7f7f7;
+  font-size: 1.1rem;
+  border-radius: 0;
+}
+
 .contact {
   margin-top: 3rem;
 }
