@@ -721,6 +721,7 @@ footer {
         width: 100%;
         @include transition(transform 0.7s ease-in-out);
         margin-right: 1rem;
+        object-fit: contain;
       }
     }
   }
